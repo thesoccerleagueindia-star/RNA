@@ -11,11 +11,12 @@
     .reg-shell { max-width: 40rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
     .fee-live {
       margin: 1rem 0 1.25rem; padding: 1rem 1.1rem;
-      background: #f3f6f9; border-left: 3px solid var(--gold);
+      background: var(--mint); border-left: 3px solid var(--green);
     }
     .fee-live .payable { font-size: 1.5rem; font-weight: 700; margin-top: 0.35rem; }
     .page-top {
-      background: var(--navy); color: #fff; padding: 2.5rem 1.25rem 2rem;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      color: #fff; padding: 2.5rem 1.25rem 2rem;
     }
     .page-top h1 {
       margin: 0; font-family: var(--font-display); font-weight: 200;
@@ -31,20 +32,20 @@
         <span class="brand-x" aria-hidden="true">×</span>
         <span class="logo-plate academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" /></span>
       </a>
-      <a class="btn btn-teal header-cta" href="index.html" style="margin-left:auto">Brochure</a>
+      <a class="btn btn-green header-cta" href="index.html" style="margin-left:auto;display:inline-flex">Brochure</a>
     </div>
   </header>
 
   <section class="page-top">
     <div class="reg-shell" style="padding-bottom:0">
-      <p class="eyebrow" style="color:var(--gold)">Registration</p>
+      <p class="eyebrow" style="color:var(--green)">Registration</p>
       <h1>Register for the Clinic</h1>
       <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.88)">Complete the form, then Pay Now via Razorpay. Fee <strong>₹3,850</strong> inclusive of GST.</p>
     </div>
   </section>
 
   <div class="reg-shell">
-    <form class="interest-panel interest-form" id="reg-form" novalidate style="padding:1.5rem">
+    <form class="interest-form" id="reg-form" novalidate>
       <div class="form-row">
         <label for="playerName">Player full name *</label>
         <input id="playerName" name="playerName" required autocomplete="name" />
@@ -81,6 +82,7 @@
           <select id="interest" name="interest" required>
             <option>Clinic</option>
             <option>Camp</option>
+            <option>Both</option>
           </select>
         </div>
       </div>
@@ -113,15 +115,15 @@
         <span>I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and acknowledge the <a href="refund-policy.html" target="_blank">no-refund</a> policy. *</span>
       </label>
 
-      <button class="btn btn-teal btn-block" type="submit" id="pay-btn">Pay Now · <span id="pay-btn-amount">₹3,850</span></button>
+      <button class="btn btn-green btn-block" type="submit" id="pay-btn">Pay Now · <span id="pay-btn-amount">₹3,850</span></button>
       <p class="form-status" id="form-status" role="status"></p>
       <p class="tbc-note">Pay Now opens the live Razorpay page: <a href="https://razorpay.me/@rnaclinicindia2027?amount=trAZ1UkbSzNzZMEB9OinbA%3D%3D" target="_blank" rel="noopener">razorpay.me/@rnaclinicindia2027</a></p>
     </form>
 
-    <div id="success-panel" class="interest-panel" hidden style="padding:1.5rem;margin-top:1rem">
+    <div id="success-panel" class="interest-form" hidden style="margin-top:1rem">
       <h2 style="margin-top:0;font-family:var(--font-display);letter-spacing:0.04em">Continue to payment</h2>
       <p id="success-body"></p>
-      <p><a class="btn btn-teal" href="index.html">Back to brochure</a></p>
+      <p><a class="btn btn-green" href="index.html">Back to brochure</a></p>
     </div>
   </div>
 

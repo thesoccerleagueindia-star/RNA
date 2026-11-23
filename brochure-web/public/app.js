@@ -41,13 +41,17 @@
       try {
         const key = "aise-clinic-tour-2027-waitlist";
         const existing = JSON.parse(localStorage.getItem(key) || "[]");
-        existing.push({ ...data, id: `WL-${Date.now().toString(36).toUpperCase()}`, submittedAt: new Date().toISOString() });
+        existing.push({
+          ...data,
+          id: `WL-${Date.now().toString(36).toUpperCase()}`,
+          submittedAt: new Date().toISOString(),
+        });
         localStorage.setItem(key, JSON.stringify(existing));
       } catch {
         /* ignore */
       }
       status.textContent = "You’re on the waitlist. We’ll be in touch — no payment taken.";
-      status.style.color = "#0f6b4c";
+      status.classList.remove("error");
       form.reset();
     });
   }
@@ -63,7 +67,7 @@
           navLinks.forEach((link) => {
             const active = link.getAttribute("href") === `#${id}`;
             link.style.opacity = active ? "1" : "";
-            link.style.color = active ? "var(--gold)" : "";
+            link.style.color = active ? "var(--green)" : "";
           });
         });
       },

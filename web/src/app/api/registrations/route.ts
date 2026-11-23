@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { eventConfig } from "@/lib/config";
 import { readStore, writeStore, type Registration } from "@/lib/store";
+import { supabaseConfigured, supabaseInsert } from "@/lib/supabase";
 
 export async function GET() {
   const store = await readStore();
@@ -52,11 +53,42 @@ export async function POST(req: Request) {
   store.registrations.push(reg);
   await writeStore(store);
 
+  const warnings: string[] = [];
+  if (supabaseConfigured()) {
+    try {
+      await supabaseInsert("registrations", {
+        id: reg.id,
+        submitted_at: reg.createdAt,
+        player_name: reg.playerName,
+        guardian_name: reg.guardianName,
+        age: String(reg.age),
+        city: reg.city,
+        category: reg.category,
+        interest: reg.interest,
+        email: String(body.email || ""),
+        guardian_contact: reg.guardianContact,
+        fee_payable: reg.feePayable,
+        fee_note: eventConfig.feeNote,
+        payment_status: reg.paymentStatus,
+        payment_provider: "razorpay.me",
+        payment_url: eventConfig.razorpayMe.fullFeeUrl,
+        razorpay_payment_link_id: "",
+        guardian_consent: true,
+        privacy_ack: true,
+      });
+    } catch (e) {
+      warnings.push(e instanceof Error ? e.message : "Supabase insert failed");
+    }
+  } else {
+    warnings.push("Supabase not configured");
+  }
+
   return NextResponse.json({
     ok: true,
     registration: reg,
     paymentUrl: eventConfig.razorpayMe.fullFeeUrl,
     feeNote: eventConfig.feeNote,
+    warnings,
     message: "Registration draft created. Complete payment on Razorpay to confirm.",
   });
 }

@@ -9,14 +9,17 @@
 :root {
   --navy: #041b35;
   --navy-mid: #08284b;
-  --teal: #17b9c8;
-  --teal-deep: #0e8f9b;
+  --teal: #c9a227; /* brand gold — primary CTA accent */
+  --teal-deep: #a8861a;
+  --gold: #c9a227;
+  --gold-soft: #e8d28a;
+  --red: #9e1b2e;
   --ice: #dceaf4;
   --lime: #d7ef55;
   --white: #ffffff;
   --ink: #041b35;
   --muted: rgba(4, 27, 53, 0.68);
-  --header-h: 4.25rem;
+  --header-h: 4.5rem;
   --font-display: "Monument Extended", "Arial Narrow", sans-serif;
   --font-body: "Outfit", system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -93,6 +96,35 @@ select {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.brand-logos .logo-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.65rem;
+  padding: 0.28rem 0.45rem;
+  background: #fff;
+}
+.brand-logos .logo-plate.academy {
+  background: #000;
+}
+.brand-logos img {
+  height: 1.85rem;
+  width: auto;
+  max-width: 7.5rem;
+  object-fit: contain;
+}
+.brand-x {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
 }
 
 .brand-lockup {
@@ -769,6 +801,32 @@ select {
 /* Interest form */
 .interest {
   background: var(--ice);
+}
+
+.program-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.program-card {
+  background: #fff;
+  border-top: 3px solid var(--gold);
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 10px 28px rgba(4, 27, 53, 0.06);
+}
+.program-card h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+}
+.program-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+@media (min-width: 720px) {
+  .program-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .interest-panel {

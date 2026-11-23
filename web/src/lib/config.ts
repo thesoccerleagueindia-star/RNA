@@ -68,9 +68,13 @@ export const eventConfig = {
     },
   ],
   promoCodes: [
-    { code: "INAUGURAL10", type: "percent" as const, value: 10, label: "10% inaugural discount", maxRedemptions: 100 },
-    { code: "FLAT500", type: "flat" as const, value: 500, label: "₹500 off", maxRedemptions: 50 },
-    { code: "DEMO100", type: "percent" as const, value: 100, label: "Demo zero-pay", maxRedemptions: 999 },
+    {
+      code: "INAUGURAL10",
+      type: "percent" as const,
+      value: 10,
+      label: "Inaugural 10% — first 40 confirmed registrations only",
+      maxRedemptions: 40,
+    },
   ],
 };
 
@@ -86,7 +90,7 @@ export function applyPromo(fee: number, code?: string | null) {
   if (!promo) return { ok: false as const, fee, discount: 0, promo: null, message: "Invalid promo code" };
   let discount = 0;
   if (promo.type === "percent") discount = Math.round((fee * promo.value) / 100);
-  if (promo.type === "flat") discount = promo.value;
+  else discount = promo.value; // flat
   discount = Math.min(discount, fee);
   return { ok: true as const, fee: fee - discount, discount, promo, message: promo.label };
 }

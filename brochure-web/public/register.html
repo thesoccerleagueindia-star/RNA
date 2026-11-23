@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register · Rafa Nadal Academy Clinic India Tour 2027</title>
+  <meta name="theme-color" content="#041B35" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .reg-shell { max-width: 40rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    .fee-live {
+      margin: 1rem 0 1.25rem; padding: 1rem 1.1rem;
+      background: #f3f6f9; border-left: 3px solid var(--gold);
+    }
+    .fee-live .payable { font-size: 1.5rem; font-weight: 700; margin-top: 0.35rem; }
+    .fee-live .struck { text-decoration: line-through; opacity: 0.55; margin-right: 0.5rem; }
+    .page-top {
+      background: var(--navy); color: #fff; padding: 2.5rem 1.25rem 2rem;
+    }
+    .page-top h1 {
+      margin: 0; font-family: var(--font-display); font-weight: 200;
+      font-size: clamp(1.35rem, 4vw, 2rem); letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-logos" href="index.html">
+        <span class="logo-plate"><img src="assets/logos/atletas-india-logo.jpg" alt="Atletas India" /></span>
+        <span class="brand-x" aria-hidden="true">×</span>
+        <span class="logo-plate academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" /></span>
+      </a>
+      <a class="btn btn-teal header-cta" href="index.html" style="margin-left:auto">Brochure</a>
+    </div>
+  </header>
+
+  <section class="page-top">
+    <div class="reg-shell" style="padding-bottom:0">
+      <p class="eyebrow" style="color:var(--gold)">Registration</p>
+      <h1>Register for the Clinic</h1>
+      <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.88)">Complete the form. Apply the inaugural discount if available. Payable amount updates instantly.</p>
+    </div>
+  </section>
+
+  <div class="reg-shell">
+    <form class="interest-panel interest-form" id="reg-form" novalidate style="padding:1.5rem">
+      <div class="form-row">
+        <label for="playerName">Player full name *</label>
+        <input id="playerName" name="playerName" required autocomplete="name" />
+      </div>
+      <div class="form-row twin">
+        <div>
+          <label for="city">City *</label>
+          <select id="city" name="city" required>
+            <option value="">Select</option>
+            <option>Mumbai</option>
+            <option>Bangalore</option>
+            <option>Kolkata</option>
+            <option>Chennai</option>
+            <option>Delhi</option>
+          </select>
+        </div>
+        <div>
+          <label for="age">Player age *</label>
+          <input id="age" name="age" type="number" min="5" max="25" required />
+        </div>
+      </div>
+      <div class="form-row twin">
+        <div>
+          <label for="category">Category *</label>
+          <select id="category" name="category" required>
+            <option value="">Select</option>
+            <option>Juniors</option>
+            <option>Mid-level</option>
+            <option>High Performance / Elite</option>
+          </select>
+        </div>
+        <div>
+          <label for="interest">Interested in *</label>
+          <select id="interest" name="interest" required>
+            <option>Clinic</option>
+            <option>Camp</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="guardianName">Parent / guardian name *</label>
+        <input id="guardianName" name="guardianName" required />
+      </div>
+      <div class="form-row twin">
+        <div>
+          <label for="guardianContact">Guardian contact *</label>
+          <input id="guardianContact" name="guardianContact" type="tel" required placeholder="+91 …" />
+        </div>
+        <div>
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="promo">Discount code</label>
+        <div style="display:flex;gap:0.5rem">
+          <input id="promo" name="promo" placeholder="INAUGURAL10" style="flex:1" autocomplete="off" />
+          <button class="btn btn-navy" type="button" id="apply-promo">Apply</button>
+        </div>
+        <p class="tbc-note" id="promo-msg" style="margin-top:0.4rem">Inaugural 10% for the first 40 confirmed registrations only.</p>
+      </div>
+
+      <div class="fee-live" aria-live="polite">
+        <div>Clinic fee: <span id="fee-base">₹4,250</span></div>
+        <div>Discount: <span id="fee-discount">—</span></div>
+        <div class="payable">Payable: <span id="fee-struck" class="struck" hidden></span><span id="fee-total">₹4,250</span></div>
+      </div>
+
+      <label class="check-row">
+        <input type="checkbox" name="guardianConsent" required />
+        <span>I am the parent/guardian or authorised adult for this registration. *</span>
+      </label>
+      <label class="check-row">
+        <input type="checkbox" name="privacyAck" required />
+        <span>I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and acknowledge the <a href="refund-policy.html" target="_blank">no-refund</a> policy. *</span>
+      </label>
+
+      <button class="btn btn-teal btn-block" type="submit" id="pay-btn">Pay <span id="pay-btn-amount">₹4,250</span> (Demo)</button>
+      <p class="form-status" id="form-status" role="status"></p>
+      <p class="tbc-note">Demo checkout stores confirmation in this browser only and does not charge a card. Live Razorpay requires server keys.</p>
+    </form>
+
+    <div id="success-panel" class="interest-panel" hidden style="padding:1.5rem;margin-top:1rem">
+      <h2 style="margin-top:0;font-family:var(--font-display);letter-spacing:0.04em">Registration recorded</h2>
+      <p id="success-body"></p>
+      <p><a class="btn btn-teal" href="index.html">Back to brochure</a></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-contact" style="grid-column:1/-1">
+      <p class="footer-label">Contact Us</p>
+      <p><a href="tel:+918013166131">+91 80131 66131</a> · <a href="mailto:CONTACT@AISEORG.INFO">CONTACT@AISEORG.INFO</a> · <a href="https://www.aiseorg.info">WWW.AISEORG.INFO</a></p>
+    </div>
+  </footer>
+
+  <script src="register.js" defer></script>
+</body>
+</html>

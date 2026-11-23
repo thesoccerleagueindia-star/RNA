@@ -14,7 +14,6 @@
       background: #f3f6f9; border-left: 3px solid var(--gold);
     }
     .fee-live .payable { font-size: 1.5rem; font-weight: 700; margin-top: 0.35rem; }
-    .fee-live .struck { text-decoration: line-through; opacity: 0.55; margin-right: 0.5rem; }
     .page-top {
       background: var(--navy); color: #fff; padding: 2.5rem 1.25rem 2rem;
     }
@@ -40,7 +39,7 @@
     <div class="reg-shell" style="padding-bottom:0">
       <p class="eyebrow" style="color:var(--gold)">Registration</p>
       <h1>Register for the Clinic</h1>
-      <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.88)">Complete the form. Apply the inaugural discount if available. Payable amount updates instantly.</p>
+      <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.88)">Complete the form, then Pay Now via Razorpay. Fee <strong>₹3,850</strong> inclusive of GST.</p>
     </div>
   </section>
 
@@ -100,19 +99,9 @@
         </div>
       </div>
 
-      <div class="form-row">
-        <label for="promo">Discount code</label>
-        <div style="display:flex;gap:0.5rem">
-          <input id="promo" name="promo" placeholder="INAUGURAL10" style="flex:1" autocomplete="off" />
-          <button class="btn btn-navy" type="button" id="apply-promo">Apply</button>
-        </div>
-        <p class="tbc-note" id="promo-msg" style="margin-top:0.4rem">Inaugural 10% for the first 40 confirmed registrations only.</p>
-      </div>
-
       <div class="fee-live" aria-live="polite">
-        <div>Clinic fee: <span id="fee-base">₹4,250</span></div>
-        <div>Discount: <span id="fee-discount">—</span></div>
-        <div class="payable">Payable: <span id="fee-struck" class="struck" hidden></span><span id="fee-total">₹4,250</span></div>
+        <div class="payable">Payable: <span id="fee-total">₹3,850</span></div>
+        <div class="tbc-note" style="margin-top:0.35rem">Inclusive of GST</div>
       </div>
 
       <label class="check-row">
@@ -124,14 +113,13 @@
         <span>I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and acknowledge the <a href="refund-policy.html" target="_blank">no-refund</a> policy. *</span>
       </label>
 
-      <button class="btn btn-teal btn-block" type="submit" id="pay-btn">Pay Now · <span id="pay-btn-amount">₹4,250</span></button>
+      <button class="btn btn-teal btn-block" type="submit" id="pay-btn">Pay Now · <span id="pay-btn-amount">₹3,850</span></button>
       <p class="form-status" id="form-status" role="status"></p>
       <p class="tbc-note">Pay Now opens the live Razorpay page: <a href="https://razorpay.me/@rnaclinicindia2027?amount=trAZ1UkbSzNzZMEB9OinbA%3D%3D" target="_blank" rel="noopener">razorpay.me/@rnaclinicindia2027</a></p>
-
     </form>
 
     <div id="success-panel" class="interest-panel" hidden style="padding:1.5rem;margin-top:1rem">
-      <h2 style="margin-top:0;font-family:var(--font-display);letter-spacing:0.04em">Registration recorded</h2>
+      <h2 style="margin-top:0;font-family:var(--font-display);letter-spacing:0.04em">Continue to payment</h2>
       <p id="success-body"></p>
       <p><a class="btn btn-teal" href="index.html">Back to brochure</a></p>
     </div>

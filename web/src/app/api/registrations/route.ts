@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { applyPromo, eventConfig } from "@/lib/config";
+import { eventConfig } from "@/lib/config";
 import { readStore, writeStore, type Registration } from "@/lib/store";
 
 export async function GET() {
@@ -20,19 +20,7 @@ export async function POST(req: Request) {
     if (!body[key]) return NextResponse.json({ error: `Missing ${key}` }, { status: 400 });
   }
 
-  const feeResult = applyPromo(eventConfig.feeInr, body.promoCode);
-  if (body.promoCode && !feeResult.ok) {
-    return NextResponse.json({ error: feeResult.message }, { status: 400 });
-  }
-
   const store = await readStore();
-  if (feeResult.promo) {
-    const used = store.promoRedemptions.filter((r) => r.code === feeResult.promo!.code).length;
-    if (used >= feeResult.promo.maxRedemptions) {
-      return NextResponse.json({ error: "Promo code fully redeemed" }, { status: 400 });
-    }
-  }
-
   const city = eventConfig.cities.find((c) => c.name === body.city);
   if (!city) return NextResponse.json({ error: "Unknown city" }, { status: 400 });
   const confirmedCount = store.registrations.filter(
@@ -52,10 +40,10 @@ export async function POST(req: Request) {
     guardianName: String(body.guardianName),
     guardianContact: String(body.guardianContact),
     playerContact: body.playerContact ? String(body.playerContact) : undefined,
-    promoCode: feeResult.promo?.code || null,
+    promoCode: null,
     feeBase: eventConfig.feeInr,
-    discount: feeResult.discount,
-    feePayable: feeResult.fee,
+    discount: 0,
+    feePayable: eventConfig.feeInr,
     status: "pending_payment",
     paymentStatus: "unpaid",
     createdAt: new Date().toISOString(),
@@ -67,7 +55,8 @@ export async function POST(req: Request) {
   return NextResponse.json({
     ok: true,
     registration: reg,
-    paymentMode: (process.env.PAYMENT_MODE || "demo").toLowerCase() === "live" ? "live" : "demo",
-    message: "Registration draft created. Complete payment to confirm.",
+    paymentUrl: eventConfig.razorpayMe.fullFeeUrl,
+    feeNote: eventConfig.feeNote,
+    message: "Registration draft created. Complete payment on Razorpay to confirm.",
   });
 }

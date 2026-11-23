@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,6 @@ import { eventConfig, formatInr } from "@/lib/config";
 type Draft = {
   id: string;
   feePayable: number;
-  discount: number;
   playerName: string;
   city: string;
   interest: string;
@@ -20,43 +19,9 @@ const RAZORPAY_PAY_URL = eventConfig.razorpayMe.fullFeeUrl;
 export default function RegisterPage() {
   const params = useSearchParams();
   const [status, setStatus] = useState("");
-  const [promoMsg, setPromoMsg] = useState("Inaugural 10% for the first 40 confirmed registrations only.");
-  const [feePreview, setFeePreview] = useState({ base: eventConfig.feeInr, discount: 0, payable: eventConfig.feeInr });
   const [draft, setDraft] = useState<Draft | null>(null);
   const [paidRef, setPaidRef] = useState<string | null>(null);
-  const [promo, setPromo] = useState("");
-
   const initialCity = params.get("city") || "";
-
-  async function validatePromo(code: string) {
-    if (!code.trim()) {
-      setPromoMsg("Inaugural 10% for the first 40 confirmed registrations only.");
-      setFeePreview({ base: eventConfig.feeInr, discount: 0, payable: eventConfig.feeInr });
-      return null;
-    }
-    const res = await fetch("/api/promo/validate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ code }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setPromoMsg(data.message || "Invalid code");
-      setFeePreview({ base: eventConfig.feeInr, discount: 0, payable: eventConfig.feeInr });
-      return null;
-    }
-    const left = data.maxRedemptions - data.redemptions;
-    setPromoMsg(`${data.label} · ${left} places left`);
-    setFeePreview({ base: data.feeBase, discount: data.discount, payable: data.feePayable });
-    return data;
-  }
-
-  useEffect(() => {
-    const t = setTimeout(() => {
-      void validatePromo(promo);
-    }, 250);
-    return () => clearTimeout(t);
-  }, [promo]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -76,7 +41,6 @@ export default function RegisterPage() {
     setDraft({
       id: data.registration.id,
       feePayable: data.registration.feePayable,
-      discount: data.registration.discount,
       playerName: data.registration.playerName,
       city: data.registration.city,
       interest: data.registration.interest,
@@ -110,7 +74,9 @@ export default function RegisterPage() {
         <div className="mx-auto max-w-xl">
           <p className="font-display text-xs uppercase tracking-[0.16em] text-[var(--gold)]">Registration</p>
           <h1 className="font-display mt-2 text-3xl">Register for the Clinic</h1>
-          <p className="mt-2 text-white/85">Complete the form, then Pay Now via Razorpay.</p>
+          <p className="mt-2 text-white/85">
+            Fee {formatInr(eventConfig.feeInr)} {eventConfig.feeNote}. Then Pay Now via Razorpay.
+          </p>
         </div>
       </section>
 
@@ -122,12 +88,9 @@ export default function RegisterPage() {
               <p className="mt-2">Reference <strong>{paidRef}</strong></p>
               {draft && (
                 <p className="mt-1 text-black/70">
-                  {draft.playerName} · {draft.city} · Payable {formatInr(draft.feePayable)}
+                  {draft.playerName} · {draft.city} · {formatInr(draft.feePayable)} ({eventConfig.feeNote})
                 </p>
               )}
-              <p className="mt-3 text-sm text-black/65">
-                A Razorpay payment page opened for <strong>ATLETAS INDIA SPORTS AND ENTERTAINMENT</strong>. If it did not open, use the button below.
-              </p>
               <a
                 href={RAZORPAY_PAY_URL}
                 target="_blank"
@@ -136,7 +99,6 @@ export default function RegisterPage() {
               >
                 Open Razorpay Pay Now
               </a>
-              <p className="mt-3 text-xs text-black/50">Keep your reference ID for confirmation with the organiser.</p>
               <Link href="/" className="mt-4 block text-sm font-semibold underline">Back to brochure</Link>
             </div>
           ) : !draft ? (
@@ -182,32 +144,14 @@ export default function RegisterPage() {
                   <input name="email" type="email" required className="mt-1 w-full border border-black/15 px-3 py-2" />
                 </label>
               </div>
-              <label className="mb-1 block text-sm font-medium">Discount code
-                <input
-                  name="promoCode"
-                  value={promo}
-                  onChange={(e) => setPromo(e.target.value)}
-                  className="mt-1 w-full border border-black/15 px-3 py-2"
-                  placeholder="INAUGURAL10"
-                  autoComplete="off"
-                />
-              </label>
-              <p className="mb-3 text-xs text-black/60">{promoMsg}</p>
-              <div className="mb-4 border-l-[3px] border-[var(--gold)] bg-[var(--mist)] p-3 text-sm">
-                <div>Base: {formatInr(feePreview.base)}</div>
-                <div>Discount: {feePreview.discount ? `−${formatInr(feePreview.discount)}` : "—"}</div>
-                <div className="text-lg font-bold">
-                  Payable:{" "}
-                  {feePreview.discount > 0 && (
-                    <span className="mr-2 text-base font-normal line-through opacity-55">{formatInr(feePreview.base)}</span>
-                  )}
-                  {formatInr(feePreview.payable)}
-                </div>
+              <div className="mb-4 border-l-[3px] border-[var(--gold)] bg-[var(--mist)] p-3">
+                <div className="text-lg font-bold">Payable: {formatInr(eventConfig.feeInr)}</div>
+                <div className="text-sm text-black/60">Inclusive of GST</div>
               </div>
               <label className="mb-2 flex gap-2 text-sm"><input type="checkbox" required name="consent" /> Guardian consent *</label>
               <label className="mb-4 flex gap-2 text-sm"><input type="checkbox" required name="privacy" /> I agree to Privacy &amp; no-refund policy *</label>
               <button type="submit" className="w-full bg-[var(--gold)] py-3 font-semibold text-[var(--navy)]">
-                Continue to Pay Now · {formatInr(feePreview.payable)}
+                Continue to Pay Now · {formatInr(eventConfig.feeInr)}
               </button>
               {status && <p className="mt-2 font-semibold text-red-700">{status}</p>}
             </form>
@@ -217,7 +161,7 @@ export default function RegisterPage() {
               <p className="mt-2 text-black/70">{draft.playerName} · {draft.city} · {draft.interest}</p>
               <p>Reference <strong>{draft.id}</strong></p>
               <p className="mt-2 text-xl font-bold">{formatInr(draft.feePayable)}</p>
-              {draft.discount > 0 && <p className="text-sm">Discount applied: {formatInr(draft.discount)}</p>}
+              <p className="text-sm text-black/60">Inclusive of GST</p>
               <button
                 type="button"
                 onClick={payNow}
@@ -231,7 +175,6 @@ export default function RegisterPage() {
                   razorpay.me/@rnaclinicindia2027
                 </a>
               </p>
-              {status && <p className="mt-2 text-sm font-semibold text-red-700">{status}</p>}
             </div>
           )}
         </div>

@@ -32,7 +32,7 @@ export default function HomePage() {
               This is more than a clinic — it is India’s chance to step onto a court shaped by Rafa Nadal Academy standards.
               Across five cities, players train in a focused 1.5-hour session with coaches travelling from Spain — sharper
               footwork, cleaner technique, and the competitive mindset that wins tight points. Limited slots. Provisional
-              300 places per city. Clinic fee {formatInr(eventConfig.feeInr)}. If you are serious about the next level, this
+              300 places per city. Clinic fee {formatInr(eventConfig.feeInr)} {eventConfig.feeNote}. If you are serious about the next level, this
               is where the season begins.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -88,6 +88,7 @@ export default function HomePage() {
                 );
               })}
             </div>
+            <p className="mt-4 text-sm text-black/55">Clinic fee {formatInr(eventConfig.feeInr)} inclusive of GST.</p>
           </div>
         </section>
 
@@ -104,7 +105,7 @@ export default function HomePage() {
               <a href="/register" target="_blank" rel="noopener noreferrer" className="font-semibold underline">
                 Register Now
               </a>{" "}
-              opens in a new window with fee and inaugural discount.
+              — pay {formatInr(eventConfig.feeInr)} (incl. GST) via Razorpay.
             </p>
           </div>
         </section>

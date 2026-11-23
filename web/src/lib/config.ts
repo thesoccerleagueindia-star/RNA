@@ -9,7 +9,9 @@ export const eventConfig = {
     web: "WWW.AISEORG.INFO",
     webUrl: "https://www.aiseorg.info",
   },
-  feeInr: 4250,
+  feeInr: 3850,
+  feeInclusiveOfGst: true,
+  feeNote: "inclusive of GST",
   currency: "INR",
   capacityPerCityDefault: 300,
   cities: [
@@ -67,16 +69,7 @@ export const eventConfig = {
       days: [] as { date: string; label: string; category: string }[],
     },
   ],
-  promoCodes: [
-    {
-      code: "INAUGURAL10",
-      type: "percent" as const,
-      value: 10,
-      label: "Inaugural 10% — first 40 confirmed registrations only",
-      maxRedemptions: 40,
-    },
-  ],
-  /** Live Razorpay.me payment page for clinic fee. */
+  /** Live Razorpay.me payment page for clinic fee (₹3,850). */
   razorpayMe: {
     fullFeeUrl:
       "https://razorpay.me/@rnaclinicindia2027?amount=trAZ1UkbSzNzZMEB9OinbA%3D%3D",
@@ -88,18 +81,6 @@ export const eventConfig = {
 export function paymentMode(): "demo" | "live" {
   const mode = (process.env.PAYMENT_MODE || "demo").toLowerCase();
   return mode === "live" ? "live" : "demo";
-}
-
-export function applyPromo(fee: number, code?: string | null) {
-  const raw = String(code || "").trim().toUpperCase();
-  if (!raw) return { ok: true as const, fee, discount: 0, promo: null, message: "" };
-  const promo = eventConfig.promoCodes.find((p) => p.code === raw);
-  if (!promo) return { ok: false as const, fee, discount: 0, promo: null, message: "Invalid promo code" };
-  let discount = 0;
-  if (promo.type === "percent") discount = Math.round((fee * promo.value) / 100);
-  else discount = promo.value; // flat
-  discount = Math.min(discount, fee);
-  return { ok: true as const, fee: fee - discount, discount, promo, message: promo.label };
 }
 
 export function formatInr(amount: number) {

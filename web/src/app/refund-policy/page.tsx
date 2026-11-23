@@ -13,12 +13,12 @@ export default function RefundPage() {
       </section>
       <section className="mx-auto max-w-2xl space-y-4 px-4 py-10 text-sm">
         <p>
-          Clinic registration fees for the Rafa Nadal Academy Clinic India Tour 2027 (base {formatInr(eventConfig.feeInr)},
-          or the discounted amount after a valid promo) are <strong>non-refundable</strong>.
+          Clinic registration fees for the Rafa Nadal Academy Clinic India Tour 2027 (
+          {formatInr(eventConfig.feeInr)} {eventConfig.feeNote}) are <strong>non-refundable</strong>.
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>No refunds for change of mind, scheduling conflicts, illness, travel disruption, or non-attendance.</li>
-          <li>No cash refunds for unused discount codes or partial sessions.</li>
+          <li>No cash refunds for partial sessions.</li>
           <li>If the organiser cancels a city edition entirely, a transfer or credit may be offered at our discretion — not an automatic cash refund.</li>
           <li>Waitlist interest does not involve payment.</li>
         </ul>

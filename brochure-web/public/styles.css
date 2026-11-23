@@ -1046,75 +1046,59 @@ select {
     linear-gradient(180deg, var(--ice), var(--white));
 }
 
-.pack-grid {
+.pack-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.85rem;
-  margin-bottom: 2.5rem;
-}
-
-.pack-item {
-  margin: 0;
-  background: var(--navy);
-  overflow: hidden;
-}
-
-.pack-item img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-}
-
-.pack-item figcaption {
-  padding: 0.85rem 1rem 1rem;
-  display: grid;
-  gap: 0.2rem;
-  color: var(--white);
-}
-
-.pack-item figcaption strong {
-  font-size: 0.95rem;
-}
-
-.pack-item figcaption span {
-  font-size: 0.78rem;
-  color: var(--green);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.pack-alongside {
-  display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
-.pack-alongside figure {
+.pack-list {
+  list-style: none;
+  margin: 1.75rem 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  max-width: 28rem;
+}
+
+.pack-list li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(4, 27, 53, 0.12);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--navy);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.pack-list li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--green);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.pack-note {
+  margin: 0 0 1.25rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.pack-photo {
   margin: 0;
   overflow: hidden;
 }
 
-.pack-alongside img {
+.pack-photo img {
   width: 100%;
-  height: min(55vw, 380px);
+  height: min(70vw, 520px);
   object-fit: cover;
-}
-
-.pack-alongside h3 {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-display);
-  font-weight: 200;
-  font-size: 1.35rem;
-  letter-spacing: 0.04em;
-}
-
-.pack-alongside p {
-  color: var(--muted);
-  margin: 0 0 0.85rem;
-}
-
-.pack-alongside .btn {
-  margin-top: 0.5rem;
+  object-position: center 25%;
 }
 
 /* Experience mosaic */
@@ -1428,16 +1412,12 @@ select {
   .program-layout,
   .ninety-layout,
   .coaches-why,
-  .pack-alongside {
+  .pack-layout {
     grid-template-columns: 1.05fr 0.95fr;
   }
 
   .coach-slots {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  .pack-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .exp-mosaic {

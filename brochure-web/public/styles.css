@@ -793,6 +793,330 @@ select {
   grid-row: 1 / -1;
 }
 
+/* Why 90 minutes */
+.ninety {
+  background:
+    radial-gradient(ellipse at left top, rgba(184, 225, 74, 0.1), transparent 45%),
+    linear-gradient(180deg, var(--white), var(--ice));
+}
+
+.ninety-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.ninety-points {
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.ninety-points article {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(4, 27, 53, 0.1);
+}
+
+.ninety-points h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+.ninety-points p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.ninety-visual {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ninety-visual img {
+  width: 100%;
+  height: min(70vw, 520px);
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.ninety-visual figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.85rem 1rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(to top, rgba(4, 27, 53, 0.8), transparent);
+}
+
+/* Coaches */
+.coaches {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.coaches .eyebrow {
+  color: var(--green);
+}
+
+.coaches .section-lede {
+  color: rgba(220, 234, 244, 0.88);
+}
+
+.coaches h2,
+.coaches h3 {
+  color: var(--white);
+}
+
+.coaches-why {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.coaches-why p {
+  color: rgba(220, 234, 244, 0.88);
+  font-size: 1.02rem;
+}
+
+.soft-note {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: rgba(184, 225, 74, 0.85) !important;
+}
+
+.coaches-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.coaches-grid figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.coaches-grid img {
+  width: 100%;
+  height: min(36vw, 220px);
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.coaches-grid figure:hover img {
+  transform: scale(1.05);
+}
+
+.coaches-grid figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(to top, rgba(4, 27, 53, 0.75), transparent);
+}
+
+.coach-slots {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.coach-slot {
+  padding: 1.1rem 1rem;
+  border: 1px solid rgba(184, 225, 74, 0.22);
+  background: rgba(10, 47, 82, 0.55);
+}
+
+.coach-slot .slot-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--green);
+  margin-bottom: 0.45rem;
+}
+
+.coach-slot p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.coach-slot .slot-meta {
+  margin-top: 0.25rem;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: rgba(220, 234, 244, 0.7);
+}
+
+/* Access & opportunity */
+.access {
+  position: relative;
+  color: var(--white);
+  min-height: 34rem;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.access-media {
+  position: absolute;
+  inset: 0;
+}
+
+.access-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.access-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(4, 27, 53, 0.94) 0%,
+    rgba(10, 47, 82, 0.88) 48%,
+    rgba(4, 27, 53, 0.55) 100%
+  );
+}
+
+.access-content {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+}
+
+.eyebrow.light {
+  color: var(--green);
+}
+
+.section-lede.light {
+  color: rgba(220, 234, 244, 0.88);
+}
+
+.access-list {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.access-list li {
+  padding-left: 1rem;
+  border-left: 2px solid var(--green);
+}
+
+.access-list strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.02rem;
+}
+
+.access-list span {
+  color: rgba(220, 234, 244, 0.85);
+  font-size: 0.95rem;
+}
+
+.disclaimer {
+  margin: 0;
+  font-size: 0.88rem;
+  color: rgba(220, 234, 244, 0.72);
+  border-left: 2px solid rgba(184, 225, 74, 0.45);
+  padding-left: 0.85rem;
+}
+
+/* Welcome pack */
+.welcome-pack {
+  background:
+    radial-gradient(ellipse at right bottom, rgba(20, 100, 168, 0.08), transparent 45%),
+    linear-gradient(180deg, var(--ice), var(--white));
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+.pack-item {
+  margin: 0;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.pack-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.pack-item figcaption {
+  padding: 0.85rem 1rem 1rem;
+  display: grid;
+  gap: 0.2rem;
+  color: var(--white);
+}
+
+.pack-item figcaption strong {
+  font-size: 0.95rem;
+}
+
+.pack-item figcaption span {
+  font-size: 0.78rem;
+  color: var(--green);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pack-alongside {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.pack-alongside figure {
+  margin: 0;
+  overflow: hidden;
+}
+
+.pack-alongside img {
+  width: 100%;
+  height: min(55vw, 380px);
+  object-fit: cover;
+}
+
+.pack-alongside h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+}
+
+.pack-alongside p {
+  color: var(--muted);
+  margin: 0 0 0.85rem;
+}
+
+.pack-alongside .btn {
+  margin-top: 0.5rem;
+}
+
 /* Experience mosaic */
 .experience {
   background: linear-gradient(180deg, var(--mint), var(--ice));
@@ -1101,16 +1425,31 @@ select {
   }
 
   .story-grid,
-  .program-layout {
+  .program-layout,
+  .ninety-layout,
+  .coaches-why,
+  .pack-alongside {
     grid-template-columns: 1.05fr 0.95fr;
   }
 
-  .exp-mosaic {
+  .coach-slots {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .pack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .exp-mosaic {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .exp-mosaic img {
     height: 220px;
+  }
+
+  .coaches-grid img {
+    height: 240px;
   }
 
   .site-footer {
@@ -1147,7 +1486,7 @@ select {
   }
 
   .exp-mosaic {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .exp-mosaic figure:first-child {
@@ -1156,6 +1495,11 @@ select {
 
   .exp-mosaic figure:first-child img {
     height: 320px;
+  }
+
+  .nav-desktop {
+    gap: 0.85rem;
+    font-size: 0.86rem;
   }
 }
 

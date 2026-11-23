@@ -1,0 +1,10 @@
+{
+  "name": "atletas-india-clinic-tour-2027",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rafa Nadal Clinic India Tour 2027 interactive brochure for Atletas India",
+  "scripts": {
+    "start": "npx --yes serve public -l 4173",
+    "pdf": "node ../pdf/generate-pdf.mjs"
+  }
+}

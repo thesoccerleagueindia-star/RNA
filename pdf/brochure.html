@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rafa Nadal Clinic India Tour 2027 — Print Brochure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: "Monument Extended";
+      src: url("../brochure-web/public/assets/fonts/MonumentExtended-Ultralight.otf") format("opentype");
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    :root {
+      --navy: #041b35;
+      --navy-mid: #08284b;
+      --teal: #17b9c8;
+      --ice: #dceaf4;
+      --lime: #d7ef55;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Outfit", sans-serif;
+      color: var(--navy);
+      background: #888;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto 12mm;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+      margin-bottom: 0;
+    }
+
+    .bleed-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .display {
+      font-family: "Monument Extended", "Arial Narrow", sans-serif;
+      font-weight: 200;
+      letter-spacing: 0.06em;
+    }
+
+    /* PAGE 1 — Cover */
+    .cover .veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, rgba(4,27,53,0.94) 0%, rgba(4,27,53,0.72) 48%, rgba(8,40,75,0.4) 100%),
+        linear-gradient(to top, rgba(4,27,53,0.88), transparent 42%);
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 18mm 16mm 16mm;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cover-lockup {
+      font-size: 9pt;
+      letter-spacing: 0.14em;
+      color: var(--ice);
+      margin: 0 0 8mm;
+    }
+
+    .cover-title {
+      margin: auto 0 0;
+      font-size: 28pt;
+      line-height: 1.08;
+    }
+
+    .cover-title .teal { color: var(--teal); display: block; }
+
+    .cover-descriptor {
+      margin: 5mm 0 3mm;
+      font-size: 11pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+
+    .cover-lede {
+      margin: 0 0 8mm;
+      max-width: 118mm;
+      font-size: 11.5pt;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      margin-top: auto;
+    }
+
+    .meta-box {
+      border-top: 1.5pt solid var(--teal);
+      padding-top: 3mm;
+    }
+
+    .meta-box strong {
+      display: block;
+      font-size: 10pt;
+      margin-bottom: 1mm;
+    }
+
+    .meta-box span {
+      font-size: 9pt;
+      color: rgba(220,234,244,0.85);
+    }
+
+    .cover-cta {
+      margin-top: 6mm;
+      display: inline-block;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 10pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3.2mm 6mm;
+    }
+
+    .levels {
+      margin: 0 0 5mm;
+      font-size: 9pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ice);
+    }
+
+    /* PAGE 2 — Clinic */
+    .inner {
+      padding: 14mm 14mm 12mm;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 6mm;
+      background:
+        radial-gradient(ellipse at top right, rgba(23,185,200,0.1), transparent 42%),
+        linear-gradient(180deg, var(--ice), var(--white) 40%);
+    }
+
+    .eyebrow {
+      margin: 0 0 2mm;
+      font-size: 8pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .page-h {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.15;
+    }
+
+    .lede {
+      margin: 3mm 0 0;
+      font-size: 10.5pt;
+      color: rgba(4,27,53,0.72);
+      max-width: 150mm;
+      line-height: 1.45;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 7mm;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-frame {
+      overflow: hidden;
+      position: relative;
+      min-height: 120mm;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2mm;
+      margin: 5mm 0;
+    }
+
+    .chip {
+      background: var(--navy);
+      color: var(--white);
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2mm 3.5mm;
+    }
+
+    .note {
+      font-size: 9.5pt;
+      color: rgba(4,27,53,0.7);
+      border-left: 2pt solid var(--teal);
+      padding-left: 3.5mm;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .stat {
+      margin-top: 6mm;
+      font-family: "Monument Extended", sans-serif;
+      font-size: 14pt;
+      color: var(--navy);
+    }
+
+    .stat span {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 9pt;
+      letter-spacing: 0.04em;
+      color: rgba(4,27,53,0.65);
+      margin-top: 1mm;
+    }
+
+    /* PAGE 3 — Opportunities + pack */
+    .opp-page {
+      display: grid;
+      grid-template-rows: 48% 52%;
+      height: 100%;
+    }
+
+    .opp-top {
+      position: relative;
+      color: var(--white);
+      padding: 14mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .opp-top .veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(4,27,53,0.92), rgba(8,40,75,0.7));
+    }
+
+    .opp-top > *:not(.bleed-img):not(.veil) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .opp-list {
+      margin: 3mm 0 0;
+      padding-left: 4.5mm;
+      font-size: 10pt;
+      line-height: 1.45;
+      color: var(--ice);
+    }
+
+    .disclaimer {
+      margin: 4mm 0 0;
+      font-size: 8pt;
+      color: rgba(220,234,244,0.78);
+      border-left: 2pt solid var(--lime);
+      padding-left: 3mm;
+      line-height: 1.4;
+    }
+
+    .pack {
+      padding: 10mm 14mm 12mm;
+      background: var(--white);
+    }
+
+    .pack-grid {
+      margin-top: 5mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5mm;
+    }
+
+    .pack-item {
+      border-top: 1.25pt solid var(--ice);
+      padding: 3mm 0 2mm;
+    }
+
+    .pack-item strong {
+      display: block;
+      font-size: 10pt;
+    }
+
+    .pack-item span {
+      font-size: 8.5pt;
+      color: rgba(4,27,53,0.62);
+    }
+
+    /* PAGE 4 — Cities / back */
+    .back {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14mm;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 6mm;
+    }
+
+    .edition {
+      margin-top: 5mm;
+    }
+
+    .edition-label {
+      margin: 0 0 2.5mm;
+      font-size: 8pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .city-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+    }
+
+    .city-table th,
+    .city-table td {
+      text-align: left;
+      padding: 2.4mm 2mm;
+      border-bottom: 0.6pt solid rgba(220,234,244,0.2);
+      vertical-align: top;
+    }
+
+    .city-table th {
+      color: var(--ice);
+      font-weight: 600;
+      font-size: 8pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cta-band {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 6mm;
+      align-items: center;
+      background: var(--navy-mid);
+      padding: 6mm;
+      margin-top: 4mm;
+    }
+
+    .cta-band h3 {
+      margin: 0 0 2mm;
+      font-size: 13pt;
+    }
+
+    .cta-band p {
+      margin: 0;
+      font-size: 9pt;
+      color: rgba(220,234,244,0.8);
+      line-height: 1.4;
+    }
+
+    .qr-slot {
+      border: 1.25pt dashed rgba(23,185,200,0.65);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 3mm;
+      color: var(--teal);
+      font-size: 8pt;
+      line-height: 1.35;
+    }
+
+    .org {
+      font-size: 8.5pt;
+      color: rgba(220,234,244,0.75);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .legal {
+      font-size: 7.5pt;
+      color: rgba(220,234,244,0.55);
+      line-height: 1.4;
+      margin: 3mm 0 0;
+    }
+
+    @media print {
+      body { background: none; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- PAGE 1 COVER -->
+  <section class="page cover">
+    <img class="bleed-img" src="../brochure-web/public/assets/images/c690fbe2-6954-4831-b568-fe1423b5328f.jpg" alt="" />
+    <div class="veil"></div>
+    <div class="cover-content">
+      <p class="cover-lockup display">ATLETAS INDIA × RAFA NADAL ACADEMY</p>
+      <h1 class="cover-title display">
+        RAFA NADAL CLINIC
+        <span class="teal">INDIA TOUR 2027</span>
+      </h1>
+      <p class="cover-descriptor display">The Inaugural Season in India</p>
+      <p class="cover-lede">Experience a 1.5-hour advanced tennis training session introduced by coaches travelling from Spain.</p>
+      <p class="levels">Junior Players · Beginner · Mid-Level · High Performance</p>
+      <div class="cover-meta">
+        <div class="meta-box">
+          <strong>Mumbai &amp; Bangalore</strong>
+          <span>February 2027 · Registration open</span>
+        </div>
+        <div class="meta-box">
+          <strong>Kolkata · Chennai · Delhi</strong>
+          <span>April–May 2027 · Dates TBC · Waitlist</span>
+        </div>
+        <div class="meta-box">
+          <strong>300 player slots per city</strong>
+          <span>One 90-minute session per registered player</span>
+        </div>
+        <div class="meta-box">
+          <span class="cover-cta">Register Now</span>
+          <span style="display:block;margin-top:2.5mm">Portal URLs — TBC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 CLINIC -->
+  <section class="page">
+    <div class="inner">
+      <header>
+        <p class="eyebrow display">Clinic Program</p>
+        <h2 class="page-h display">90 Minutes. World-Class Training. A Bigger Opportunity.</h2>
+        <p class="lede">An advanced clinic introducing Academy-inspired methodology, delivered by coaches travelling from Spain (subject to staffing confirmation). Open to junior players across Beginner, Mid-Level and High Performance.</p>
+      </header>
+      <div class="split">
+        <div>
+          <div class="chip-row">
+            <span class="chip">Beginner</span>
+            <span class="chip">Mid-Level</span>
+            <span class="chip">High Performance</span>
+          </div>
+          <p class="note">Each registered player attends <strong>one</strong> 1.5-hour session during the three-day city programme. Individual session timings will be allocated and communicated before the event. Do not interpret the three-day window as three days of training per participant.</p>
+          <p class="stat display">1.5 HRS<span>On-court advanced session</span></p>
+          <p class="stat display">300<span>Player slots per city</span></p>
+        </div>
+        <div class="photo-frame">
+          <img class="photo" src="../brochure-web/public/assets/images/852a8ddf-6515-450c-823b-385fea2e718c.jpg" alt="Junior player training" />
+        </div>
+      </div>
+      <p class="org" style="color:rgba(4,27,53,0.65)">Organized in India by Atletas India × Rafa Nadal Academy partnership lock-up (text-only pending logo approval).</p>
+    </div>
+  </section>
+
+  <!-- PAGE 3 OPPORTUNITIES + PACK -->
+  <section class="page">
+    <div class="opp-page">
+      <div class="opp-top">
+        <img class="bleed-img" src="../brochure-web/public/assets/images/9f62fd76-7080-4b7a-b5c3-de5b6f410e84.jpg" alt="" />
+        <div class="veil"></div>
+        <p class="eyebrow display" style="color:var(--teal)">Assessment &amp; Opportunities</p>
+        <h2 class="page-h display" style="font-size:16pt">Seen. Assessed. Considered.</h2>
+        <p style="margin:2mm 0 0;font-size:10pt;color:rgba(220,234,244,0.9);max-width:145mm;line-height:1.4">Participants may be assessed by the coaching team. Based on assessment, eligibility, availability and selection criteria, outstanding players may be considered for:</p>
+        <ul class="opp-list">
+          <li>Scholarships for selected upcoming camps / programmes</li>
+          <li>Invitation to the annual programme at Rafa Nadal Center in Spain</li>
+          <li>Exclusive discounts on selected upcoming camps in India</li>
+        </ul>
+        <p class="disclaimer">Not guaranteed. Travel, accommodation and programme fees are not included unless separately confirmed. Subject to assessment and approval.</p>
+      </div>
+      <div class="pack">
+        <p class="eyebrow display">Player Welcome Pack</p>
+        <h2 class="page-h display" style="font-size:15pt">Included with participation</h2>
+        <div class="pack-grid">
+          <div class="pack-item"><strong>Welcome refreshments</strong><span>Food and hydration on arrival</span></div>
+          <div class="pack-item"><strong>Performance towel</strong><span>Clinic welcome pack item</span></div>
+          <div class="pack-item"><strong>Player shaker bottle</strong><span>Hydration for the session</span></div>
+          <div class="pack-item"><strong>Rafa Nadal Academy cap</strong><span>Subject to approved product assets</span></div>
+          <div class="pack-item"><strong>Clinic-branded T-shirt</strong><span>Official tour apparel</span></div>
+          <div class="pack-item"><strong>Participation diploma</strong><span>Certificate wording / issuer TBC</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4 BACK / CITIES -->
+  <section class="page">
+    <div class="back">
+      <header>
+        <p class="eyebrow display">City Editions · 2027</p>
+        <h2 class="page-h display" style="font-size:16pt;color:#fff">Register your city. Claim your slot.</h2>
+      </header>
+
+      <div>
+        <div class="edition">
+          <p class="edition-label display">Edition A — Mumbai &amp; Bangalore · February 2027</p>
+          <table class="city-table">
+            <thead>
+              <tr><th>City</th><th>Dates</th><th>Status</th><th>Capacity</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Mumbai</td><td>4, 5 &amp; 6 February 2027</td><td>Registration open</td><td>300</td></tr>
+              <tr><td>Bangalore</td><td>8, 9 &amp; 10 February 2027</td><td>Registration open</td><td>300</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="edition">
+          <p class="edition-label display">Edition B — Kolkata, Chennai &amp; Delhi · April–May 2027</p>
+          <table class="city-table">
+            <thead>
+              <tr><th>City</th><th>Dates</th><th>Status</th><th>Capacity</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Kolkata</td><td>Apr–May 2027 TBC</td><td>Join waitlist</td><td>300</td></tr>
+              <tr><td>Chennai</td><td>Apr–May 2027 TBC</td><td>Join waitlist</td><td>300</td></tr>
+              <tr><td>Delhi</td><td>Apr–May 2027 TBC</td><td>Join waitlist</td><td>300</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cta-band">
+          <div>
+            <h3 class="display" style="letter-spacing:0.05em">Register / Join Waitlist</h3>
+            <p>City-specific registration portals and QR destinations will be printed here once supplied by Atletas India. Venues, fees, age limits and legal page URLs remain TBC.</p>
+            <p style="margin-top:2.5mm"><strong style="color:var(--lime)">Web brochure:</strong> interactive landing (shareable link) · digital PDF with placeholders for live links.</p>
+          </div>
+          <div class="qr-slot">
+            City QR<br />destination<br />TBC
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p class="org"><strong style="color:#fff">ATLETAS INDIA × RAFA NADAL ACADEMY</strong><br />
+        Organized in India by Atletas India, a sports management company registered in Kolkata and Delhi, responsible for local marketing, promotion and operational coordination for the Rafa Nadal Clinic India Tour 2027.</p>
+        <p class="legal">Privacy Policy · Terms &amp; Conditions · Refund Policy — destination URLs TBC. Partnership claims, brand assets, programme benefits and selection opportunities are subject to documentary confirmation. This campaign does not use Rafa Nadal’s face or likeness and does not imply personal attendance unless separately confirmed in writing.</p>
+      </footer>
+    </div>
+  </section>
+</body>
+</html>

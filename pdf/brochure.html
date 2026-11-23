@@ -109,8 +109,56 @@
       display: flex;
       flex-direction: column;
     }
+    .cover-logos {
+      display: flex;
+      align-items: center;
+      gap: 5mm;
+      margin: 0 0 8mm;
+      flex-wrap: wrap;
+    }
+    .cover-logo-atletas {
+      background: #fff;
+      padding: 2.5mm 3.5mm;
+      height: 16mm;
+      display: flex;
+      align-items: center;
+    }
+    .cover-logo-atletas img {
+      height: 11mm;
+      width: auto;
+      display: block;
+    }
+    .cover-logo-x {
+      font-family: "Monument Extended", sans-serif;
+      font-size: 10pt;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .cover-logo-academy {
+      background: #000;
+      padding: 1.5mm 3mm;
+      height: 15mm;
+      display: flex;
+      align-items: center;
+    }
+    .cover-logo-academy img {
+      height: 12mm;
+      width: auto;
+      display: block;
+    }
+    .cover-partner-strip {
+      margin-top: 4mm;
+      max-width: 130mm;
+      background: #000;
+      padding: 2.5mm 3.5mm;
+    }
+    .cover-partner-strip img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
     .cover-kicker {
-      margin: 0;
+      margin: 0 0 4mm;
       font-size: 8.5pt;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -231,6 +279,33 @@
       padding: 4mm 4.5mm;
       background: var(--navy);
       color: var(--white);
+    }
+    .organiser-logos {
+      display: flex;
+      align-items: center;
+      gap: 3.5mm;
+      margin-bottom: 3mm;
+      flex-wrap: wrap;
+    }
+    .organiser-logos .plate {
+      background: #fff;
+      padding: 2mm 2.5mm;
+      display: flex;
+      align-items: center;
+      height: 12mm;
+    }
+    .organiser-logos .plate img {
+      height: 8.5mm;
+      width: auto;
+      display: block;
+    }
+    .organiser-logos .academy-dark {
+      height: 11mm;
+    }
+    .organiser-logos .academy-dark img {
+      height: 11mm;
+      width: auto;
+      display: block;
     }
     .organiser-box .label {
       font-size: 7.5pt;
@@ -516,7 +591,38 @@
       padding: 4mm;
     }
     .reg-box h3 { margin: 0 0 2mm; font-size: 10pt; color: var(--gold-soft); }
-    .reg-box p { margin: 0; font-size: 8.5pt; color: rgba(255,255,255,0.78); line-height: 1.4; }
+    .reg-box > p { margin: 0; font-size: 8.5pt; color: rgba(255,255,255,0.78); line-height: 1.4; }
+    .contact-block {
+      margin-top: 3mm;
+      padding-top: 3mm;
+      border-top: 0.6pt solid rgba(201,162,39,0.35);
+    }
+    .contact-label {
+      margin: 0 0 1.5mm;
+      font-size: 8pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .contact-line {
+      margin: 0 0 1mm;
+      font-size: 9.5pt;
+      color: #fff;
+      line-height: 1.35;
+    }
+    .contact-line strong {
+      display: inline-block;
+      min-width: 14mm;
+      color: var(--gold-soft);
+      font-weight: 600;
+      font-size: 8pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .contact-line a {
+      color: #fff;
+      text-decoration: none;
+    }
     .field-list {
       margin: 2.5mm 0 0;
       padding-left: 4mm;
@@ -547,6 +653,53 @@
       color: rgba(255,255,255,0.62);
       line-height: 1.45;
     }
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4mm;
+      margin-bottom: 3mm;
+      flex-wrap: wrap;
+    }
+    .footer-logos .pair {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+    }
+    .footer-logos .plate {
+      background: #fff;
+      padding: 1.5mm 2mm;
+      height: 9mm;
+      display: flex;
+      align-items: center;
+    }
+    .footer-logos .plate img {
+      height: 6.5mm;
+      width: auto;
+      display: block;
+    }
+    .footer-logos .academy {
+      background: #000;
+      padding: 1.2mm 2mm;
+      height: 9mm;
+      display: flex;
+      align-items: center;
+    }
+    .footer-logos .academy img {
+      height: 7mm;
+      width: auto;
+      display: block;
+    }
+    .footer-logos .partners {
+      max-width: 78mm;
+      background: #000;
+      padding: 1.5mm 2.5mm;
+    }
+    .footer-logos .partners img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     .duo-photos {
       display: grid;
@@ -574,6 +727,15 @@
     </div>
     <div class="veil"></div>
     <div class="cover-content">
+      <div class="cover-logos">
+        <div class="cover-logo-atletas">
+          <img src="../brochure-web/public/assets/images/logos/atletas-india-orange.jpg" alt="ATLETAS INDIA SPORTS AND ENTERTAINMENT" />
+        </div>
+        <span class="cover-logo-x" aria-hidden="true">×</span>
+        <div class="cover-logo-academy">
+          <img src="../brochure-web/public/assets/images/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" />
+        </div>
+      </div>
       <p class="cover-kicker display">Five-city India Tour · 2027</p>
       <h1 class="cover-title display">
         RAFA NADAL ACADEMY
@@ -599,6 +761,9 @@
           <span>Indicate your pathway at registration</span>
         </div>
       </div>
+      <div class="cover-partner-strip">
+        <img src="../brochure-web/public/assets/images/logos/atletas-laliga-partners-white.png" alt="ATLETAS and LaLiga football school partners" />
+      </div>
     </div>
   </section>
 
@@ -615,6 +780,14 @@
         <div>
           <p class="lede" style="margin-top:0">The India organising partner coordinates local marketing, registrations, logistics and event operations for the tour. Logos and partnership wording remain subject to separate approval.</p>
           <div class="organiser-box">
+            <div class="organiser-logos">
+              <div class="plate">
+                <img src="../brochure-web/public/assets/images/logos/atletas-india-orange.jpg" alt="ATLETAS INDIA SPORTS AND ENTERTAINMENT" />
+              </div>
+              <div class="academy-dark">
+                <img src="../brochure-web/public/assets/images/logos/rafa-nadal-academy-navy.png" alt="Rafa Nadal Academy" />
+              </div>
+            </div>
             <p class="label display">Indian organiser</p>
             <p class="name">ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD</p>
             <p>Responsible for local marketing, registrations, coordination, logistics and event operations for the India tour.</p>
@@ -899,7 +1072,13 @@
       <div class="closing-body">
         <div class="reg-box">
           <h3 class="display" style="letter-spacing:0.06em;">Register Your Interest · Join Waitlist</h3>
-          <p>Digital registration portals, payment gateway and confirmation messaging will be published when configured by the organiser. Brochure QR / short URLs — TBA. Contact email, phone and social channels — TBA.</p>
+          <p>Digital registration portals, payment gateway and confirmation messaging will be published when configured by the organiser. Brochure QR / short URLs — TBA.</p>
+          <div class="contact-block">
+            <p class="contact-label display">Contact Us</p>
+            <p class="contact-line"><strong>Phone</strong> <a href="tel:+918013166131">+91 80131 66131</a></p>
+            <p class="contact-line"><strong>Email</strong> <a href="mailto:CONTACT@AISEORG.INFO">CONTACT@AISEORG.INFO</a></p>
+            <p class="contact-line"><strong>Web</strong> <a href="https://www.aiseorg.info">WWW.AISEORG.INFO</a></p>
+          </div>
           <ul class="field-list">
             <li>Privacy Policy — URL TBA</li>
             <li>Terms &amp; Conditions — URL TBA</li>
@@ -915,12 +1094,24 @@
           <div><strong>Delhi</strong>Apr–May TBA</div>
         </div>
         <div class="footer-block">
+          <div class="footer-logos">
+            <div class="pair">
+              <div class="plate">
+                <img src="../brochure-web/public/assets/images/logos/atletas-india-orange.jpg" alt="ATLETAS INDIA SPORTS AND ENTERTAINMENT" />
+              </div>
+              <div class="academy">
+                <img src="../brochure-web/public/assets/images/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" />
+              </div>
+            </div>
+            <div class="partners">
+              <img src="../brochure-web/public/assets/images/logos/atletas-laliga-partners-white.png" alt="ATLETAS and LaLiga partners" />
+            </div>
+          </div>
           <p style="margin:0 0 2mm; color:#fff; font-family:'Monument Extended',sans-serif; letter-spacing:0.05em; font-size:8.5pt;">
             RAFA NADAL ACADEMY CLINIC INDIA TOUR 2027
           </p>
           <p style="margin:0 0 2mm;">
             Organised in India by <strong style="color:var(--gold-soft)">ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD</strong>.
-            Logos and Academy brand usage require documentary approval before public release.
           </p>
           <p style="margin:0;">
             This brochure does not use Rafa Nadal’s face or likeness as a hero endorsement and does not imply personal attendance.

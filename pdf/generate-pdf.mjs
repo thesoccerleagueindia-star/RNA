@@ -37,7 +37,7 @@ async function fileExists(p) {
 async function main() {
   const puppeteer = await ensurePuppeteer();
   const browser = await puppeteer.launch({
-    executablePath: "/usr/bin/google-chrome-stable",
+    executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome-stable",
     headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--font-render-hinting=none"],
   });

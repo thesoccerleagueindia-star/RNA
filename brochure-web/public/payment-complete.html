@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payment · RNA Clinic India Tour 2027</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-logos" href="index.html">
+        <span class="logo-plate"><img src="assets/logos/atletas-india-logo.jpg" alt="Atletas India" /></span>
+        <span class="brand-x" aria-hidden="true">×</span>
+        <span class="logo-plate academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" /></span>
+      </a>
+    </div>
+  </header>
+  <main class="section" style="max-width:40rem;margin:0 auto">
+    <p class="eyebrow">Payment</p>
+    <h1 style="font-family:var(--font-display);font-weight:200;letter-spacing:0.04em">Thank you</h1>
+    <p id="msg" class="section-lede">If you completed payment on Razorpay, keep your registration reference ID and payment receipt. The organiser will confirm your place.</p>
+    <p><a class="btn btn-green" href="index.html">Back to brochure</a></p>
+  </main>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const status = q.get("razorpay_payment_link_status") || q.get("status");
+    const payId = q.get("razorpay_payment_id");
+    const ref = q.get("razorpay_payment_link_reference_id");
+    const el = document.getElementById("msg");
+    if (status === "paid" || payId) {
+      el.innerHTML = `Payment received${payId ? ` (payment id <strong>${payId}</strong>)` : ""}${ref ? ` · ref <strong>${ref}</strong>` : ""}. Keep this page or your email receipt for records.`;
+    }
+  </script>
+</body>
+</html>

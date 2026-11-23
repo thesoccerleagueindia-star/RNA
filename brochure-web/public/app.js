@@ -5,6 +5,7 @@
   const form = document.querySelector("#waitlist-form");
   const status = document.querySelector("#waitlist-status");
   const citySelect = document.querySelector("#city");
+  const KEY_WAITLIST = "aise-clinic-tour-2027-waitlist";
 
   if (toggle && mobileNav) {
     toggle.addEventListener("click", () => {
@@ -27,32 +28,64 @@
     });
   });
 
+  function saveLocal(data) {
+    try {
+      const existing = JSON.parse(localStorage.getItem(KEY_WAITLIST) || "[]");
+      existing.push(data);
+      localStorage.setItem(KEY_WAITLIST, JSON.stringify(existing));
+    } catch {
+      /* ignore */
+    }
+  }
+
   if (form && status) {
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       status.classList.remove("error");
+      status.textContent = "";
       if (!form.checkValidity()) {
         status.textContent = "Please complete the required fields.";
         status.classList.add("error");
         form.reportValidity();
         return;
       }
+
       const data = Object.fromEntries(new FormData(form).entries());
+      data.consent = Boolean(form.querySelector('[name="consent"]')?.checked);
+      const localRecord = {
+        ...data,
+        id: `WL-${Date.now().toString(36).toUpperCase()}`,
+        submittedAt: new Date().toISOString(),
+      };
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      status.textContent = "Submitting…";
+
       try {
-        const key = "aise-clinic-tour-2027-waitlist";
-        const existing = JSON.parse(localStorage.getItem(key) || "[]");
-        existing.push({
-          ...data,
-          id: `WL-${Date.now().toString(36).toUpperCase()}`,
-          submittedAt: new Date().toISOString(),
+        const res = await fetch("/api/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
         });
-        localStorage.setItem(key, JSON.stringify(existing));
-      } catch {
-        /* ignore */
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.ok === false) {
+          throw new Error(json.error || `Server error ${res.status}`);
+        }
+        saveLocal({ ...localRecord, id: json.id || localRecord.id, source: "api" });
+        status.textContent =
+          "You’re on the waitlist. We’ve emailed you a confirmation when email is configured — no payment taken.";
+        if (json.id) status.textContent += ` Reference ${json.id}.`;
+        form.reset();
+      } catch (err) {
+        // Offline / host without API — keep local copy so interest isn’t lost on device
+        saveLocal({ ...localRecord, source: "localStorage-fallback", error: String(err.message || err) });
+        status.textContent =
+          "Saved on this device (server unreachable). Please also email CONTACT@AISEORG.INFO or try again later.";
+        status.classList.add("error");
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
-      status.textContent = "You’re on the waitlist. We’ll be in touch — no payment taken.";
-      status.classList.remove("error");
-      form.reset();
     });
   }
 

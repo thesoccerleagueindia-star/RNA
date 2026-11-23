@@ -80,11 +80,29 @@
 
     <section class="status-strip" aria-label="City registration status">
       <div class="status-track">
-        <a class="status-chip open" href="#city-mumbai"><span class="city">Mumbai</span><span class="state">Register</span></a>
-        <a class="status-chip open" href="#city-bangalore"><span class="city">Bangalore</span><span class="state">Register</span></a>
-        <a class="status-chip wait" href="#waitlist"><span class="city">Kolkata</span><span class="state">Waitlist</span></a>
-        <a class="status-chip wait" href="#waitlist"><span class="city">Chennai</span><span class="state">Waitlist</span></a>
-        <a class="status-chip wait" href="#waitlist"><span class="city">Delhi</span><span class="state">Waitlist</span></a>
+        <a class="status-chip open" href="#city-mumbai"><span class="city">Mumbai</span><span class="state">Register · Waitlist</span></a>
+        <a class="status-chip open" href="#city-bangalore"><span class="city">Bangalore</span><span class="state">Register · Waitlist</span></a>
+        <a class="status-chip wait" href="#waitlist"><span class="city">Kolkata</span><span class="state">Waitlist · FCFS</span></a>
+        <a class="status-chip wait" href="#waitlist"><span class="city">Chennai</span><span class="state">Waitlist · FCFS</span></a>
+        <a class="status-chip wait" href="#waitlist"><span class="city">Delhi</span><span class="state">Waitlist · FCFS</span></a>
+      </div>
+    </section>
+
+    <section class="capacity-band" id="capacity" aria-labelledby="capacity-heading">
+      <div class="capacity-inner wrap">
+        <p class="eyebrow light">Limited capacity</p>
+        <h2 id="capacity-heading">300 slots only per city</h2>
+        <p class="capacity-lede">
+          A premium, focused clinic window — not an open festival. Each city edition is planned for approximately
+          <strong>300 places</strong> across <strong>Juniors</strong>, <strong>Mid-level</strong>, and
+          <strong>High Performance / Elite</strong>. Capacity remains provisional and may be adjusted.
+        </p>
+        <ul class="capacity-levels" aria-label="Player levels covered">
+          <li><span class="lvl-tag">Day 1</span> Juniors</li>
+          <li><span class="lvl-tag">Day 2</span> Mid-level</li>
+          <li><span class="lvl-tag">Day 3</span> High Performance / Elite</li>
+        </ul>
+        <p class="capacity-soft">Places are limited. Early interest improves your chance of a preferred city and category.</p>
       </div>
     </section>
 
@@ -99,7 +117,7 @@
           </p>
           <p>
             Across five cities, junior and competitive players will sharpen footwork, technique, and the competitive mindset that wins tight points.
-            Provisional 300 places per city. Mumbai and Bangalore open first.
+            Approximately 300 provisional places per city. Mumbai and Bangalore open first.
           </p>
           <p>
             Organised in India by <strong>ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD</strong>.
@@ -142,7 +160,10 @@
       <div class="section-intro wrap">
         <p class="eyebrow">City Editions</p>
         <h2 id="cities-heading">Five cities. Limited slots.</h2>
-        <p class="section-lede">Mumbai and Bangalore open first. Kolkata, Chennai and Delhi follow later — join the waitlist to be first in line.</p>
+        <p class="section-lede">
+          Mumbai and Bangalore are open for registration — you can also join the waitlist.
+          Kolkata, Chennai and Delhi are first-come, first-served interest lists until dates open.
+        </p>
       </div>
       <div class="city-grid">
         <article class="city-panel" id="city-mumbai">
@@ -158,9 +179,12 @@
             <p class="city-landmark">Gateway of India</p>
             <p class="city-dates">4–6 February 2027</p>
             <p class="city-detail">Day 1 Juniors · Day 2 Mid-level · Day 3 High Performance / Elite</p>
-            <p class="city-venue">Venue TBA · 300 slots (provisional)</p>
+            <p class="city-venue">Venue TBA · ~300 slots (provisional)</p>
             <p class="city-cap">Clinic fee ₹3,850 (incl. GST)</p>
-            <a class="btn btn-green btn-block" href="register.html?city=Mumbai" target="_blank" rel="noopener">Register Now</a>
+            <div class="city-actions">
+              <a class="btn btn-green btn-block" href="register.html?city=Mumbai" target="_blank" rel="noopener">Register Now</a>
+              <a class="btn btn-ghost btn-block" href="#waitlist" data-city="Mumbai">Join Waitlist</a>
+            </div>
           </div>
         </article>
 
@@ -177,9 +201,12 @@
             <p class="city-landmark">Vidhana Soudha</p>
             <p class="city-dates">8–10 February 2027</p>
             <p class="city-detail">Day 1 Juniors · Day 2 Mid-level · Day 3 High Performance / Elite</p>
-            <p class="city-venue">Venue TBA · 300 slots (provisional)</p>
+            <p class="city-venue">Venue TBA · ~300 slots (provisional)</p>
             <p class="city-cap">Clinic fee ₹3,850 (incl. GST)</p>
-            <a class="btn btn-green btn-block" href="register.html?city=Bangalore" target="_blank" rel="noopener">Register Now</a>
+            <div class="city-actions">
+              <a class="btn btn-green btn-block" href="register.html?city=Bangalore" target="_blank" rel="noopener">Register Now</a>
+              <a class="btn btn-ghost btn-block" href="#waitlist" data-city="Bangalore">Join Waitlist</a>
+            </div>
           </div>
         </article>
 
@@ -195,7 +222,8 @@
             </div>
             <p class="city-landmark">Howrah Bridge</p>
             <p class="city-dates">Late April–May 2027 · TBA</p>
-            <p class="city-detail">Dates &amp; venue to be announced</p>
+            <p class="city-detail">~300 provisional slots · Juniors · Mid-level · High Performance</p>
+            <p class="city-fcfs">First-come, first-served interest — join the waitlist to register your place in line.</p>
             <a class="btn btn-blue btn-block" href="#waitlist" data-city="Kolkata">Join Waitlist</a>
           </div>
         </article>
@@ -212,7 +240,8 @@
             </div>
             <p class="city-landmark">Marina Beach</p>
             <p class="city-dates">Late April–May 2027 · TBA</p>
-            <p class="city-detail">Dates &amp; venue to be announced</p>
+            <p class="city-detail">~300 provisional slots · Juniors · Mid-level · High Performance</p>
+            <p class="city-fcfs">First-come, first-served interest — join the waitlist to register your place in line.</p>
             <a class="btn btn-blue btn-block" href="#waitlist" data-city="Chennai">Join Waitlist</a>
           </div>
         </article>
@@ -229,7 +258,8 @@
             </div>
             <p class="city-landmark">Red Fort</p>
             <p class="city-dates">Late April–May 2027 · TBA</p>
-            <p class="city-detail">Dates &amp; venue to be announced</p>
+            <p class="city-detail">~300 provisional slots · Juniors · Mid-level · High Performance</p>
+            <p class="city-fcfs">First-come, first-served interest — join the waitlist to register your place in line.</p>
             <a class="btn btn-blue btn-block" href="#waitlist" data-city="Delhi">Join Waitlist</a>
           </div>
         </article>
@@ -541,6 +571,10 @@
         <details>
           <summary>What is the clinic fee?</summary>
           <p><strong>₹3,850 (INR) inclusive of GST</strong> for clinic registration. Camp pricing TBA. Payment is via Razorpay.</p>
+        </details>
+        <details>
+          <summary>How many slots are there per city?</summary>
+          <p>Each city edition is planned for approximately <strong>300 slots</strong> across Juniors, Mid-level and High Performance / Elite. Capacity is provisional and may be adjusted. Kolkata, Chennai and Delhi run on a first-come, first-served interest / waitlist basis until registration opens.</p>
         </details>
         <details>
           <summary>Who organises the tour?</summary>

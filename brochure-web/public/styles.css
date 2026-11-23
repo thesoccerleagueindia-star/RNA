@@ -477,6 +477,82 @@ select {
   color: var(--blue-soft);
 }
 
+/* Capacity highlight */
+.capacity-band {
+  background:
+    linear-gradient(120deg, rgba(4, 27, 53, 0.97), rgba(10, 47, 82, 0.94)),
+    var(--navy);
+  color: var(--white);
+  padding: 3.25rem 1.25rem;
+  border-top: 1px solid rgba(184, 225, 74, 0.18);
+  border-bottom: 1px solid rgba(184, 225, 74, 0.18);
+}
+
+.capacity-inner {
+  text-align: center;
+  max-width: 44rem;
+}
+
+.capacity-band .eyebrow.light {
+  color: var(--green);
+}
+
+.capacity-band h2 {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(1.55rem, 5vw, 2.6rem);
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+.capacity-lede {
+  margin: 0 auto 1.5rem;
+  max-width: 38rem;
+  color: rgba(228, 238, 247, 0.9);
+  font-size: 1.05rem;
+}
+
+.capacity-lede strong {
+  color: var(--green);
+}
+
+.capacity-levels {
+  list-style: none;
+  margin: 0 auto 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.capacity-levels li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(184, 225, 74, 0.28);
+  background: rgba(184, 225, 74, 0.08);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.capacity-levels .lvl-tag {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.capacity-soft {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(228, 238, 247, 0.72);
+  font-style: italic;
+}
+
 /* Sections */
 .section {
   padding: 4.5rem 1.25rem;
@@ -714,6 +790,23 @@ select {
   margin: 0.75rem 0 1rem;
   color: var(--green);
   font-weight: 600;
+}
+
+.city-fcfs {
+  margin: 0.55rem 0 1rem;
+  font-size: 0.9rem;
+  color: rgba(228, 238, 247, 0.88);
+  line-height: 1.45;
+}
+
+.city-actions {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.city-actions .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .city-panel .btn {

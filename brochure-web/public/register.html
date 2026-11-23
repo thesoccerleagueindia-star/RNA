@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Register · Rafa Nadal Academy Clinic India Tour 2027</title>
   <meta name="theme-color" content="#041B35" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -22,6 +22,22 @@
       margin: 0; font-family: var(--font-display); font-weight: 200;
       font-size: clamp(1.35rem, 4vw, 2rem); letter-spacing: 0.04em;
     }
+    .reg-header-cta {
+      margin-left: auto;
+      display: inline-flex;
+      flex-shrink: 0;
+      min-height: 2.5rem;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.88rem;
+    }
+    @media (max-width: 719px) {
+      .reg-shell { padding: 1.15rem 1rem 2.5rem; }
+      .page-top { padding: 1.75rem 1rem 1.5rem; }
+      .fee-live .payable { font-size: 1.35rem; }
+      .reg-header-cta { padding: 0.4rem 0.75rem; font-size: 0.82rem; }
+      #success-panel { margin-top: 1rem; }
+      #success-panel .btn { width: 100%; min-height: 3rem; }
+    }
   </style>
 </head>
 <body>
@@ -32,7 +48,7 @@
         <span class="brand-x" aria-hidden="true">×</span>
         <span class="logo-plate academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" /></span>
       </a>
-      <a class="btn btn-green header-cta" href="index.html" style="margin-left:auto;display:inline-flex">Brochure</a>
+      <a class="btn btn-green reg-header-cta" href="index.html">Brochure</a>
     </div>
   </header>
 

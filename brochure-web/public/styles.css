@@ -34,6 +34,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 0.5rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -47,6 +49,9 @@ body {
     var(--white);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
 }
 
 img {
@@ -434,6 +439,12 @@ select {
   color: var(--white);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.status-strip::-webkit-scrollbar {
+  display: none;
+  height: 0;
 }
 
 .status-track {
@@ -1289,11 +1300,18 @@ select {
 .form-row {
   display: grid;
   gap: 0.35rem;
+  min-width: 0;
 }
 
 .form-row.twin {
   grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+.form-row.twin > div {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
 }
 
 .form-row label,
@@ -1303,16 +1321,22 @@ select {
 }
 
 .form-row input,
-.form-row select {
-  min-height: 2.75rem;
-  padding: 0.55rem 0.75rem;
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 2.85rem;
+  padding: 0.65rem 0.75rem;
   border: 1px solid rgba(4, 27, 53, 0.18);
   border-radius: 2px;
   background: #f7fbfd;
+  /* Avoid iOS zoom on focus (needs ≥16px) */
+  font-size: 1rem;
 }
 
 .form-row input:focus,
-.form-row select:focus {
+.form-row select:focus,
+.form-row textarea:focus {
   outline: 2px solid var(--blue);
   outline-offset: 1px;
 }
@@ -1320,14 +1344,26 @@ select {
 .check-row {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.65rem;
+  gap: 0.75rem;
   align-items: start;
   color: var(--muted);
+  line-height: 1.45;
+}
+
+.check-row input[type="checkbox"] {
+  width: 1.35rem;
+  height: 1.35rem;
+  min-width: 1.35rem;
+  margin: 0.15rem 0 0;
+  accent-color: var(--blue);
+  cursor: pointer;
 }
 
 .check-row a {
   color: var(--blue);
   text-decoration: underline;
+  /* Larger hit area for policy links */
+  padding: 0.1rem 0;
 }
 
 .form-status {
@@ -1477,6 +1513,279 @@ select {
   opacity: 0.7;
   border-top: 1px solid rgba(220, 234, 244, 0.12);
   padding-top: 1.25rem;
+}
+
+/* ——— Phone / small tablet portrait ——— */
+@media (max-width: 719px) {
+  :root {
+    --header-h: 4.15rem;
+  }
+
+  .site-header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .header-inner {
+    padding: 0.6rem 0.9rem;
+    gap: 0.55rem;
+    min-height: var(--header-h);
+  }
+
+  .brand-logos {
+    gap: 0.35rem;
+    max-width: calc(100% - 3.25rem);
+  }
+
+  .brand-logos .logo-plate {
+    height: 2.25rem;
+    padding: 0.2rem 0.32rem;
+  }
+
+  .brand-logos img {
+    height: 1.5rem;
+    max-width: 5.6rem;
+  }
+
+  .brand-x {
+    font-size: 0.78rem;
+  }
+
+  /* Keep header lean on phones: Register lives in the hamburger menu */
+  .header-cta {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+  }
+
+  .nav-mobile {
+    padding: 0.35rem 0.9rem calc(1.1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .nav-mobile a {
+    min-height: 2.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 0.15rem;
+  }
+
+  .nav-mobile .btn {
+    min-height: 3rem;
+  }
+
+  .hero {
+    min-height: min(100svh, 780px);
+    align-items: end;
+  }
+
+  .hero-content {
+    padding: 5rem 1rem calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero-lockup {
+    font-size: clamp(0.58rem, 2.8vw, 0.72rem);
+    letter-spacing: 0.1em;
+    line-height: 1.35;
+  }
+
+  .hero-title {
+    font-size: clamp(1.4rem, 7.6vw, 2.05rem);
+    word-break: break-word;
+  }
+
+  .hero-descriptor {
+    font-size: 1rem;
+    margin: 0.9rem 0 1.25rem;
+    max-width: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 3rem;
+  }
+
+  .status-track {
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .status-chip {
+    min-width: 7.75rem;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .section {
+    padding: 3.25rem 1rem;
+  }
+
+  .section-intro {
+    margin-bottom: 1.5rem;
+  }
+
+  .capacity-band {
+    padding: 2.5rem 1rem;
+  }
+
+  .capacity-band h2 {
+    font-size: clamp(1.4rem, 6.5vw, 2rem);
+  }
+
+  .capacity-lede {
+    font-size: 0.98rem;
+  }
+
+  .capacity-levels {
+    gap: 0.5rem;
+  }
+
+  .capacity-levels li {
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 2.75rem;
+    font-size: 0.88rem;
+  }
+
+  .city-grid {
+    gap: 1rem;
+  }
+
+  .city-panel {
+    min-height: 0;
+  }
+
+  .city-panel .city-shade {
+    background: linear-gradient(
+      to top,
+      rgba(4, 27, 53, 0.96) 0%,
+      rgba(4, 27, 53, 0.72) 42%,
+      rgba(4, 27, 53, 0.35) 100%
+    );
+  }
+
+  .city-body {
+    padding: 1.2rem 1rem 1.1rem;
+  }
+
+  .city-name {
+    font-size: 1.05rem;
+  }
+
+  .city-dates {
+    font-size: 1.05rem;
+  }
+
+  .city-detail,
+  .city-venue,
+  .city-cap,
+  .city-fcfs {
+    font-size: 0.9rem;
+  }
+
+  .city-actions {
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+  }
+
+  .city-panel .btn {
+    margin-top: 0;
+    min-height: 3rem;
+    width: 100%;
+  }
+
+  .city-actions .btn-ghost {
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(4, 27, 53, 0.28);
+  }
+
+  .photo-ribbon .ribbon-track {
+    grid-auto-columns: minmax(160px, 72vw);
+  }
+
+  .exp-mosaic,
+  .coaches-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .program-visual {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    min-height: 0;
+  }
+
+  .program-visual img:first-child {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    min-height: 12rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .program-visual img:not(:first-child) {
+    min-height: 8rem;
+    aspect-ratio: 4 / 3;
+  }
+
+  .coach-slots {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .access {
+    min-height: 0;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .interest-form {
+    padding: 1.15rem 1rem;
+    gap: 0.95rem;
+  }
+
+  .interest-form .btn {
+    min-height: 3.05rem;
+    width: 100%;
+  }
+
+  .faq-item summary {
+    font-size: 0.98rem;
+    padding: 0.9rem 0;
+    gap: 0.75rem;
+  }
+
+  .site-footer {
+    padding: 2.5rem 1rem calc(2rem + env(safe-area-inset-bottom, 0px));
+    gap: 1.5rem;
+  }
+
+  .contact-links {
+    gap: 0.65rem;
+  }
+
+  .contact-links a {
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-logos img {
+    max-width: 4.85rem;
+    height: 1.35rem;
+  }
+
+  .brand-logos .logo-plate {
+    height: 2.05rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.28rem, 8vw, 1.7rem);
+  }
 }
 
 @media (min-width: 720px) {

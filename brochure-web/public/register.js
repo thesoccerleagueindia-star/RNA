@@ -90,11 +90,23 @@
         warnings: json.warnings || [],
       };
     } catch (err) {
-      record.source = "localStorage-fallback";
-      record.apiError = String(err.message || err);
-      statusEl.textContent =
-        "Server unreachable — opening Razorpay with a local reference. Please also message CONTACT@AISEORG.INFO with your details.";
-      statusEl.classList.add("error");
+      try {
+        if (!window.RNA_SUPABASE) throw err;
+        const r = await window.RNA_SUPABASE.insertRegistration(data);
+        record = {
+          ...record,
+          id: r.id,
+          paymentUrl: r.paymentUrl || RAZORPAY_ME_FALLBACK,
+          feePayable: r.feePayable || FEE,
+          source: "supabase-browser",
+        };
+      } catch (err2) {
+        record.source = "localStorage-fallback";
+        record.apiError = String(err2.message || err2);
+        statusEl.textContent =
+          "Storage unreachable — opening Razorpay with a local reference. Also email CONTACT@AISEORG.INFO.";
+        statusEl.classList.add("error");
+      }
     }
 
     const regs = read(KEY_REGS);

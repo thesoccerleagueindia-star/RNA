@@ -16,7 +16,14 @@ module.exports = {
   fromEmail: env("EMAIL_FROM", "CONTACT@AISEORG.INFO"),
   siteName: "Rafa Nadal Academy Clinic India Tour 2027",
 
-  // Google Sheets — prefer Apps Script webhook (simplest). Service account is optional.
+  // Supabase (primary storage when URL + publishable key are set)
+  supabaseUrl: env("SUPABASE_URL", env("NEXT_PUBLIC_SUPABASE_URL")),
+  supabasePublishableKey: env(
+    "SUPABASE_PUBLISHABLE_KEY",
+    env("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY", env("NEXT_PUBLIC_SUPABASE_ANON_KEY"))
+  ),
+
+  // Google Sheets — optional secondary / legacy path
   sheetsAppsScriptUrl: env("SHEETS_APPS_SCRIPT_URL"),
   waitlistSheetId: env("WAITLIST_SHEET_ID"),
   registrationSheetId: env("REGISTRATION_SHEET_ID"),

@@ -62,6 +62,9 @@
       if (submitBtn) submitBtn.disabled = true;
       status.textContent = "Submitting…";
 
+      let savedId = localRecord.id;
+      let ok = false;
+
       try {
         const res = await fetch("/api/waitlist", {
           method: "POST",
@@ -69,23 +72,37 @@
           body: JSON.stringify(data),
         });
         const json = await res.json().catch(() => ({}));
-        if (!res.ok || json.ok === false) {
+        if (res.ok && json.ok !== false) {
+          savedId = json.id || savedId;
+          ok = true;
+          saveLocal({ ...localRecord, id: savedId, source: "api" });
+        } else {
           throw new Error(json.error || `Server error ${res.status}`);
         }
-        saveLocal({ ...localRecord, id: json.id || localRecord.id, source: "api" });
-        status.textContent =
-          "You’re on the waitlist. We’ve emailed you a confirmation when email is configured — no payment taken.";
-        if (json.id) status.textContent += ` Reference ${json.id}.`;
-        form.reset();
       } catch (err) {
-        // Offline / host without API — keep local copy so interest isn’t lost on device
-        saveLocal({ ...localRecord, source: "localStorage-fallback", error: String(err.message || err) });
-        status.textContent =
-          "Saved on this device (server unreachable). Please also email CONTACT@AISEORG.INFO or try again later.";
-        status.classList.add("error");
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
+        try {
+          if (!window.RNA_SUPABASE) throw err;
+          const r = await window.RNA_SUPABASE.insertWaitlist(data);
+          savedId = r.id;
+          ok = true;
+          saveLocal({ ...localRecord, id: savedId, source: "supabase-browser" });
+        } catch (err2) {
+          saveLocal({
+            ...localRecord,
+            source: "localStorage-fallback",
+            error: String(err2.message || err2),
+          });
+          status.textContent =
+            "Could not reach storage. Saved on this device only — please email CONTACT@AISEORG.INFO or try again.";
+          status.classList.add("error");
+        }
       }
+
+      if (ok) {
+        status.textContent = `You’re on the waitlist. Reference ${savedId}. No payment taken.`;
+        form.reset();
+      }
+      if (submitBtn) submitBtn.disabled = false;
     });
   }
 

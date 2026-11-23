@@ -36,6 +36,11 @@ const {
 } = require("./lib/validate");
 const { appendWaitlist, appendRegistration, sheetsConfigured } = require("./lib/sheets");
 const {
+  supabaseConfigured,
+  insertWaitlist,
+  insertRegistration,
+} = require("./lib/supabase");
+const {
   emailConfigured,
   sendWaitlistEmails,
   sendRegistrationEmails,
@@ -130,12 +135,24 @@ async function handleWaitlist(body) {
 
   const result = { ok: true, id: record.id, stored: {}, emails: null, warnings: [] };
 
-  if (!sheetsConfigured()) {
-    result.warnings.push(
-      "Sheets not configured — set SHEETS_APPS_SCRIPT_URL (recommended) or service-account sheet IDs."
-    );
+  if (supabaseConfigured()) {
+    try {
+      result.stored.supabase = await insertWaitlist(record);
+    } catch (e) {
+      result.warnings.push(`Supabase failed: ${e.message}`);
+    }
   } else {
-    result.stored.sheets = await appendWaitlist(record);
+    result.warnings.push(
+      "Supabase not configured — set SUPABASE_URL + SUPABASE_PUBLISHABLE_KEY (see backend-setup.md)."
+    );
+  }
+
+  if (sheetsConfigured()) {
+    try {
+      result.stored.sheets = await appendWaitlist(record);
+    } catch (e) {
+      result.warnings.push(`Sheets failed: ${e.message}`);
+    }
   }
 
   if (!emailConfigured()) {
@@ -148,6 +165,16 @@ async function handleWaitlist(body) {
     } catch (e) {
       result.warnings.push(`Email failed: ${e.message}`);
     }
+  }
+
+  if (!result.stored.supabase && !result.stored.sheets) {
+    const err = new Error(
+      result.warnings.find((w) => w.startsWith("Supabase failed")) ||
+        "No storage backend succeeded (Supabase/Sheets)."
+    );
+    err.status = 502;
+    err.payload = result;
+    throw err;
   }
 
   return result;
@@ -207,12 +234,24 @@ async function handleRegister(body) {
     warnings: [],
   };
 
-  if (!sheetsConfigured()) {
-    result.warnings.push(
-      "Sheets not configured — set SHEETS_APPS_SCRIPT_URL (recommended) or service-account sheet IDs."
-    );
+  if (supabaseConfigured()) {
+    try {
+      result.stored.supabase = await insertRegistration(record);
+    } catch (e) {
+      result.warnings.push(`Supabase failed: ${e.message}`);
+    }
   } else {
-    result.stored.sheets = await appendRegistration(record);
+    result.warnings.push(
+      "Supabase not configured — set SUPABASE_URL + SUPABASE_PUBLISHABLE_KEY (see backend-setup.md)."
+    );
+  }
+
+  if (sheetsConfigured()) {
+    try {
+      result.stored.sheets = await appendRegistration(record);
+    } catch (e) {
+      result.warnings.push(`Sheets failed: ${e.message}`);
+    }
   }
 
   if (!emailConfigured()) {
@@ -225,6 +264,16 @@ async function handleRegister(body) {
     } catch (e) {
       result.warnings.push(`Email failed: ${e.message}`);
     }
+  }
+
+  if (!result.stored.supabase && !result.stored.sheets) {
+    const err = new Error(
+      result.warnings.find((w) => w.startsWith("Supabase failed")) ||
+        "No storage backend succeeded (Supabase/Sheets)."
+    );
+    err.status = 502;
+    err.payload = result;
+    throw err;
   }
 
   return result;
@@ -256,10 +305,21 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "GET" && pathname === "/api/health") {
       return send(res, 200, {
         ok: true,
+        supabase: supabaseConfigured(),
         sheets: sheetsConfigured(),
         email: emailConfigured(),
         razorpayApi: razorpayApiConfigured(),
         feeInr: config.feeInr,
+      });
+    }
+
+    // Public publishable config for browser fallback inserts (safe to expose)
+    if (req.method === "GET" && pathname === "/api/public-config") {
+      return send(res, 200, {
+        supabaseUrl: config.supabaseUrl || null,
+        supabasePublishableKey: config.supabasePublishableKey || null,
+        feeInr: config.feeInr,
+        razorpayMeUrl: config.razorpayMeUrl,
       });
     }
 
@@ -305,15 +365,22 @@ const server = http.createServer(async (req, res) => {
     send(res, 405, { ok: false, error: "Method not allowed" });
   } catch (e) {
     console.error(e);
-    send(res, e.status || 500, { ok: false, error: e.message || "Server error" });
+    send(res, e.status || 500, {
+      ok: false,
+      error: e.message || "Server error",
+      warnings: e.payload?.warnings,
+      id: e.payload?.id,
+    });
   }
 });
 
 server.listen(config.port, "0.0.0.0", () => {
   console.log(`RNA Clinic Tour listening on :${config.port}`);
   console.log(
-    `Sheets: ${sheetsConfigured() ? "configured" : "NOT configured"} · Email: ${
-      emailConfigured() ? "configured" : "NOT configured"
-    } · Razorpay API: ${razorpayApiConfigured() ? "yes" : "razorpay.me fallback"}`
+    `Supabase: ${supabaseConfigured() ? "configured" : "NOT configured"} · Sheets: ${
+      sheetsConfigured() ? "configured" : "off"
+    } · Email: ${emailConfigured() ? "configured" : "NOT configured"} · Razorpay API: ${
+      razorpayApiConfigured() ? "yes" : "razorpay.me fallback"
+    }`
   );
 });

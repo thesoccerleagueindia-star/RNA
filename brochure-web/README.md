@@ -20,15 +20,22 @@ npm start
 
 Full setup: see `docs/backend-setup.md` in the project store, or `backend-setup.md` next to this zip when packaged.
 
-## Google Sheets (confirmed)
+## Storage
 
-| Role | ID | Used by |
-|------|----|---------|
-| **Waitlist** | `1DuoOtwG6g_tzNyQi275VxF7QUzMXbNx3ygybODGCzCM` | `POST /api/waitlist` |
-| **Registration** | `15fKInC0I1udku9ChOvMGoIUYy3ehCzpFNAwsUCIoDnU` | `POST /api/register` |
+**Primary: Supabase** — run `supabase/schema.sql` in the SQL Editor, then set:
 
-Set these as Apps Script **Script Properties** (`WAITLIST_SHEET_ID` / `REGISTRATION_SHEET_ID`). See `backend-setup.md`.
+- `SUPABASE_URL`
+- `SUPABASE_PUBLISHABLE_KEY` (or `NEXT_PUBLIC_*` aliases)
+
+**Optional secondary: Google Sheets**
+
+| Role | ID |
+|------|----|
+| Waitlist | `1DuoOtwG6g_tzNyQi275VxF7QUzMXbNx3ygybODGCzCM` |
+| Registration | `15fKInC0I1udku9ChOvMGoIUYy3ehCzpFNAwsUCIoDnU` |
+
+See `backend-setup.md`.
 
 ## Secrets
 
-Copy `.env.example` → `.env`. Never commit API keys (sheet IDs above are OK to document).
+Copy `.env.example` → `.env`. Never commit `.env` to public git.

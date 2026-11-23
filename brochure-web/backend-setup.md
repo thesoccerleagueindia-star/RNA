@@ -24,11 +24,15 @@ Browser form
 - URL: `https://vwxldsmgpzbamueskchl.supabase.co`
 - Publishable key: set as `SUPABASE_PUBLISHABLE_KEY` / `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` on the host (see `.env.example`)
 
-### Create tables + RLS (you must click this once)
+### Create tables + RLS (required)
 
 1. Open [Supabase Dashboard](https://supabase.com/dashboard) → your project  
 2. **SQL Editor** → New query  
-3. Paste and **Run** the file `supabase/schema.sql` from the zip (also at `/agent/brochure-web/supabase/schema.sql`)
+3. Paste and **Run** `supabase/schema.sql` from the zip  
+
+If forms already show  
+`new row violates row-level security policy`  
+run **`supabase/fix-rls-for-public-forms.sql`** once (tables exist; policies missing/too strict).
 
 That creates:
 
@@ -37,11 +41,15 @@ That creates:
 | `public.waitlist` | Waitlist form rows |
 | `public.registrations` | Registration form rows |
 
-**RLS policies included:**
+**RLS policies:**
 
-- `anon` + `authenticated` may **INSERT** only (public forms)
-- `authenticated` may **SELECT** (Dashboard logged-in / future admin)
-- No public SELECT for anon — organiser views data in Table Editor (service role) or as authenticated user
+- Anyone with the publishable key may **INSERT** (public brochure forms)
+- `authenticated` may **SELECT**
+- No public SELECT for anon — view rows in Table Editor (service role)
+
+### Static Hostinger (no Node)
+
+Use **`web-brochure-html.zip`**. Forms talk to Supabase **from the browser** via `config.js` (publishable key). No `/api` required. After RLS fix SQL, waitlist/register work on plain static hosting.
 
 ### Env on host
 

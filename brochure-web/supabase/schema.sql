@@ -50,18 +50,19 @@ alter table public.waitlist enable row level security;
 alter table public.registrations enable row level security;
 
 -- Public forms: allow INSERT with publishable/anon key
+-- (no TO clause — covers anon + new sb_publishable_ keys)
 drop policy if exists "anon_insert_waitlist" on public.waitlist;
-create policy "anon_insert_waitlist"
+drop policy if exists "public_insert_waitlist" on public.waitlist;
+create policy "public_insert_waitlist"
   on public.waitlist
   for insert
-  to anon, authenticated
   with check (true);
 
 drop policy if exists "anon_insert_registrations" on public.registrations;
-create policy "anon_insert_registrations"
+drop policy if exists "public_insert_registrations" on public.registrations;
+create policy "public_insert_registrations"
   on public.registrations
   for insert
-  to anon, authenticated
   with check (true);
 
 -- No public SELECT (organiser reads via Dashboard / service role)

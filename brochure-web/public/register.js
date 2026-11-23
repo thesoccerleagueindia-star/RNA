@@ -21,6 +21,13 @@
   };
   const write = (k, v) => localStorage.setItem(k, JSON.stringify(v));
 
+  function rlsHint(msg) {
+    if (/row-level security|42501/i.test(msg || "")) {
+      return " Supabase RLS is blocking inserts — run supabase/fix-rls-for-public-forms.sql in the SQL Editor, then retry.";
+    }
+    return "";
+  }
+
   const form = document.querySelector("#reg-form");
   const statusEl = document.querySelector("#form-status");
   const payBtnAmount = document.querySelector("#pay-btn-amount");
@@ -70,41 +77,50 @@
       paymentUrl: RAZORPAY_ME_FALLBACK,
     };
 
+    let stored = false;
+    let lastErr = "";
+
+    // 1) Primary: browser → Supabase
     try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || json.ok === false) {
-        throw new Error(json.error || `Server error ${res.status}`);
+      if (!window.RNA_SUPABASE?.configured?.()) {
+        throw new Error("Supabase config missing in config.js");
       }
+      const r = await window.RNA_SUPABASE.insertRegistration(data);
       record = {
         ...record,
-        id: json.id || record.id,
-        paymentUrl: json.paymentUrl || RAZORPAY_ME_FALLBACK,
-        paymentProvider: json.paymentProvider || "razorpay.me",
-        feePayable: json.feePayable || FEE,
-        source: "api",
-        warnings: json.warnings || [],
+        id: r.id,
+        paymentUrl: r.paymentUrl || RAZORPAY_ME_FALLBACK,
+        feePayable: r.feePayable || FEE,
+        source: "supabase-browser",
       };
+      stored = true;
     } catch (err) {
+      lastErr = String(err.message || err);
+      // 2) Optional Node API
       try {
-        if (!window.RNA_SUPABASE) throw err;
-        const r = await window.RNA_SUPABASE.insertRegistration(data);
+        const res = await fetch("/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.ok === false) {
+          throw new Error(json.error || lastErr || `Server ${res.status}`);
+        }
         record = {
           ...record,
-          id: r.id,
-          paymentUrl: r.paymentUrl || RAZORPAY_ME_FALLBACK,
-          feePayable: r.feePayable || FEE,
-          source: "supabase-browser",
+          id: json.id || record.id,
+          paymentUrl: json.paymentUrl || RAZORPAY_ME_FALLBACK,
+          paymentProvider: json.paymentProvider || "razorpay.me",
+          feePayable: json.feePayable || FEE,
+          source: "api",
         };
+        stored = true;
       } catch (err2) {
+        lastErr = String(err2.message || err2 || lastErr);
         record.source = "localStorage-fallback";
-        record.apiError = String(err2.message || err2);
-        statusEl.textContent =
-          "Storage unreachable — opening Razorpay with a local reference. Also email CONTACT@AISEORG.INFO.";
+        record.apiError = lastErr;
+        statusEl.textContent = `Could not save to Supabase: ${lastErr}.${rlsHint(lastErr)} Opening Razorpay anyway — also email CONTACT@AISEORG.INFO.`;
         statusEl.classList.add("error");
       }
     }
@@ -119,7 +135,7 @@
     const success = document.querySelector("#success-panel");
     success.hidden = false;
     document.querySelector("#success-body").innerHTML = `
-      <p>Reference <strong>${record.id}</strong></p>
+      <p>Reference <strong>${record.id}</strong>${stored ? "" : " (local only — storage failed)"}</p>
       <p>${record.playerName} · ${record.city} · ${record.interest}</p>
       <p>Payable: <strong>${formatInr(record.feePayable || FEE)}</strong> <span class="tbc-note">(${FEE_LABEL})</span></p>
       <p>Complete payment on the Razorpay page that just opened.</p>

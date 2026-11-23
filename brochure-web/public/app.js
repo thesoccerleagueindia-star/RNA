@@ -38,6 +38,13 @@
     }
   }
 
+  function rlsHint(msg) {
+    if (/row-level security|42501/i.test(msg || "")) {
+      return " Supabase RLS is blocking inserts — run supabase/fix-rls-for-public-forms.sql in the SQL Editor, then retry.";
+    }
+    return "";
+  }
+
   if (form && status) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -64,36 +71,43 @@
 
       let savedId = localRecord.id;
       let ok = false;
+      let lastErr = "";
 
+      // 1) Primary: browser → Supabase (works on static Hostinger)
       try {
-        const res = await fetch("/api/waitlist", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        const json = await res.json().catch(() => ({}));
-        if (res.ok && json.ok !== false) {
-          savedId = json.id || savedId;
-          ok = true;
-          saveLocal({ ...localRecord, id: savedId, source: "api" });
-        } else {
-          throw new Error(json.error || `Server error ${res.status}`);
+        if (!window.RNA_SUPABASE?.configured?.()) {
+          throw new Error("Supabase config missing in config.js");
         }
+        const r = await window.RNA_SUPABASE.insertWaitlist(data);
+        savedId = r.id;
+        ok = true;
+        saveLocal({ ...localRecord, id: savedId, source: "supabase-browser" });
       } catch (err) {
+        lastErr = String(err.message || err);
+        // 2) Optional Node API if present
         try {
-          if (!window.RNA_SUPABASE) throw err;
-          const r = await window.RNA_SUPABASE.insertWaitlist(data);
-          savedId = r.id;
-          ok = true;
-          saveLocal({ ...localRecord, id: savedId, source: "supabase-browser" });
+          const res = await fetch("/api/waitlist", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const json = await res.json().catch(() => ({}));
+          if (res.ok && json.ok !== false) {
+            savedId = json.id || savedId;
+            ok = true;
+            saveLocal({ ...localRecord, id: savedId, source: "api" });
+          } else {
+            throw new Error(json.error || lastErr || `Server ${res.status}`);
+          }
         } catch (err2) {
+          lastErr = String(err2.message || err2 || lastErr);
           saveLocal({
             ...localRecord,
             source: "localStorage-fallback",
-            error: String(err2.message || err2),
+            error: lastErr,
           });
           status.textContent =
-            "Could not reach storage. Saved on this device only — please email CONTACT@AISEORG.INFO or try again.";
+            `Could not save to Supabase: ${lastErr}.${rlsHint(lastErr)} Or email CONTACT@AISEORG.INFO.`;
           status.classList.add("error");
         }
       }

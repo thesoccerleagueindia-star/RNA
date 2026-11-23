@@ -40,15 +40,16 @@ If anything looks stale after the four-file overwrite, upload the **entire** con
 
 ## Public downloads (outside Cursor)
 
-Temporary host (tmpfiles.org). Prefer **page** links; open the page and click Download if a direct link 404s.
+**Prefer `web-brochure-html.tar.gz`** (often fewer antivirus false positives than zip-from-file-host).
 
-| Package | Page | Direct |
-|---|---|---|
-| `web-brochure-html.zip` | https://tmpfiles.org/wHAnj8948371/web-brochure-html.zip | https://tmpfiles.org/dl/1795454552.3947280736ecb9c6/wHAnj8948371/web-brochure-html.zip |
-| `rna-clinic-nodejs.zip` | https://tmpfiles.org/w6Agjb97EbJ2/rna-clinic-nodejs.zip | https://tmpfiles.org/dl/1795454553.08fbd6af9cd940ad/w6Agjb97EbJ2/rna-clinic-nodejs.zip |
-| `DEPLOY.md` | https://tmpfiles.org/wyA0jl95EYWL/deploy.md | https://tmpfiles.org/dl/1795454554.c81a66d9f2bcd743/wyA0jl95EYWL/deploy.md |
+Checksums + links: see **PUBLIC-DOWNLOADS.md** in this folder.
 
-**GitHub:** push/release failed on this agent (no `gh` login / git HTTPS credentials). Cannot publish a GitHub Release asset until the repo owner authenticates GitHub for the agent.
+- GoFile (recommended HTML tar.gz): https://gofile.io/d/56LzoLUz
+- SHA256 `web-brochure-html.tar.gz`: `c12b54b5462e9654e0e18bcac4e00c62aa9c65441fb18eeaea90ebff421cf8ec`
+- SHA256 `web-brochure-html.zip`: `4f4afff21dd1b787426a894e478114f2647b272ef6dbb481b0a1009c310b167f`
+
+**GitHub:** push/release failed on this agent (no credentials).
+
 
 ## Artifact locations (agent VM)
 

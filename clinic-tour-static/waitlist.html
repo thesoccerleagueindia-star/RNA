@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waitlist · Clinic India Tour 2027</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="demo-banner"><strong>Waitlist</strong> — no payment. Demo stores interest in this browser only.</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-logos" href="index.html">
+        <span class="plate"><img src="assets/logos/atletas-india-orange.jpg" alt="Atletas India" /></span>
+        <span class="brand-x">×</span>
+        <span class="academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" /></span>
+      </a>
+      <a class="btn btn-gold" href="index.html" style="margin-left:auto">Brochure</a>
+    </div>
+  </header>
+  <section class="page-hero">
+    <div class="section-inner">
+      <p class="eyebrow">Upcoming cities</p>
+      <h1>Join the waitlist</h1>
+      <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.85)">Waitlist submission does not guarantee a place.</p>
+    </div>
+  </section>
+  <section class="section" style="background:var(--mist)">
+    <div class="section-inner" style="max-width:40rem">
+      <form class="form-panel" id="wait-form">
+        <div class="form-row">
+          <label for="playerName">Player full name *</label>
+          <input id="playerName" name="playerName" required />
+        </div>
+        <div class="form-row twin">
+          <div>
+            <label for="city">Preferred city *</label>
+            <select id="city" name="city" required>
+              <option value="">Select</option>
+              <option>Kolkata</option>
+              <option>Chennai</option>
+              <option>Delhi</option>
+              <option>Mumbai</option>
+              <option>Bangalore</option>
+            </select>
+          </div>
+          <div>
+            <label for="interest">Interest type *</label>
+            <select id="interest" name="interest" required>
+              <option>Clinic</option>
+              <option>Camp</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row twin">
+          <div>
+            <label for="age">Age *</label>
+            <input id="age" name="age" type="number" min="5" max="25" required />
+          </div>
+          <div>
+            <label for="level">Playing level</label>
+            <select id="level" name="level">
+              <option>Juniors</option>
+              <option>Mid-level</option>
+              <option>High Performance / Elite</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone *</label>
+          <input id="phone" name="phone" type="tel" required placeholder="+91 …" />
+        </div>
+        <label class="check-row">
+          <input type="checkbox" name="consent" required />
+          <span>I consent to be contacted about this city waitlist. *</span>
+        </label>
+        <button class="btn btn-gold btn-block" type="submit">Join waitlist</button>
+        <p class="error" id="wait-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+  <script src="js/config.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const city = document.querySelector("#city");
+    if (params.get("city") && city) city.value = params.get("city");
+    document.querySelector("#wait-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.querySelector("#wait-status");
+      if (!form.checkValidity()) { status.textContent = "Please complete required fields."; form.reportValidity(); return; }
+      const data = Object.fromEntries(new FormData(form).entries());
+      const entry = { ...data, id: `WL-${Date.now().toString(36).toUpperCase()}`, createdAt: new Date().toISOString() };
+      const list = EVENT_UTILS.storage.read(EVENT_UTILS.storage.keyWait);
+      list.push(entry);
+      EVENT_UTILS.storage.write(EVENT_UTILS.storage.keyWait, list);
+      status.className = "success";
+      status.textContent = `Waitlist interest saved (demo): ${entry.id}. No payment taken.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>

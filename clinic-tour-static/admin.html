@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin (demo) · Clinic India Tour 2027</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="demo-banner"><strong>DEMO ADMIN</strong> — browser localStorage only. Not production-secure. Labelled mock data.</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-logos" href="index.html">
+        <span class="plate"><img src="assets/logos/atletas-india-orange.jpg" alt="" /></span>
+        <span class="academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="" /></span>
+      </a>
+      <a class="btn btn-gold" href="index.html" style="margin-left:auto">Brochure</a>
+    </div>
+  </header>
+  <section class="page-hero">
+    <div class="section-inner">
+      <p class="eyebrow">Admin</p>
+      <h1>Registrations, waitlist &amp; promo redemptions</h1>
+      <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.85)">Sample / demo data stored in this browser. Not real payments.</p>
+    </div>
+  </section>
+  <section class="section" style="background:var(--mist)">
+    <div class="section-inner">
+      <div class="stat-grid" id="stats"></div>
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.04em">Promo code redemptions</h2>
+      <div style="overflow:auto;margin:0.75rem 0 2rem">
+        <table class="admin-table" id="promo-table"><thead><tr><th>Code</th><th>Reg ID</th><th>Discount</th><th>Payable</th><th>When</th></tr></thead><tbody></tbody></table>
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.04em">Registrations</h2>
+      <div style="overflow:auto;margin:0.75rem 0 2rem">
+        <table class="admin-table" id="reg-table"><thead><tr><th>ID</th><th>Player</th><th>City</th><th>Pathway</th><th>Fee</th><th>Status</th><th>Promo</th></tr></thead><tbody></tbody></table>
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:0.04em">Waitlist</h2>
+      <div style="overflow:auto">
+        <table class="admin-table" id="wait-table"><thead><tr><th>ID</th><th>Player</th><th>City</th><th>Interest</th><th>Contact</th><th>When</th></tr></thead><tbody></tbody></table>
+      </div>
+      <p style="margin-top:1.5rem"><button class="btn btn-navy" type="button" id="export-csv">Export registrations CSV</button>
+      <button class="btn btn-gold" type="button" id="clear-demo" style="margin-left:0.5rem">Clear demo data</button></p>
+    </div>
+  </section>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

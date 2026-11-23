@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register · Clinic India Tour 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="demo-banner"><strong>DEMO MODE</strong> — form → fee calc → demo pay. No live card charges on this static package.</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-logos" href="index.html">
+        <span class="plate"><img src="assets/logos/atletas-india-orange.jpg" alt="Atletas India" /></span>
+        <span class="brand-x">×</span>
+        <span class="academy"><img src="assets/logos/rafa-nadal-academy-white.png" alt="Rafa Nadal Academy" /></span>
+      </a>
+      <a class="btn btn-gold header-cta" href="index.html" style="display:inline-flex;margin-left:auto">Brochure</a>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="section-inner">
+      <p class="eyebrow">Registration</p>
+      <h1>Register your interest</h1>
+      <p style="margin:0.75rem 0 0;color:rgba(255,255,255,0.85);max-width:36rem">Clinic fee <strong style="color:var(--gold-soft)">₹4,250</strong> (INR). Complete the form, apply a promo code if you have one, then proceed to payment.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--mist)">
+    <div class="section-inner" style="max-width:42rem">
+      <div class="steps">
+        <span class="step-pill active" data-step="form">1. Details</span>
+        <span class="step-pill" data-step="pay">2. Payment</span>
+      </div>
+
+      <form class="form-panel" id="reg-form" novalidate>
+        <div class="form-row">
+          <label for="playerName">Player full name *</label>
+          <input id="playerName" name="playerName" required autocomplete="name" />
+        </div>
+        <div class="form-row twin">
+          <div>
+            <label for="city">City *</label>
+            <select id="city" name="city" required>
+              <option value="">Select</option>
+              <option>Mumbai</option>
+              <option>Bangalore</option>
+              <option>Kolkata</option>
+              <option>Chennai</option>
+              <option>Delhi</option>
+            </select>
+          </div>
+          <div>
+            <label for="age">Player age *</label>
+            <input id="age" name="age" type="number" min="5" max="25" required />
+          </div>
+        </div>
+        <div class="form-row twin">
+          <div>
+            <label for="category">Player category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select</option>
+              <option>Juniors</option>
+              <option>Mid-level</option>
+              <option>High Performance / Elite</option>
+            </select>
+          </div>
+          <div>
+            <label for="interest">Interested in *</label>
+            <select id="interest" name="interest" required>
+              <option value="">Select</option>
+              <option>Clinic</option>
+              <option>Camp</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="guardianName">Parent / guardian name *</label>
+          <input id="guardianName" name="guardianName" required />
+        </div>
+        <div class="form-row twin">
+          <div>
+            <label for="guardianContact">Parent / guardian contact *</label>
+            <input id="guardianContact" name="guardianContact" type="tel" required placeholder="+91 …" />
+          </div>
+          <div>
+            <label for="playerContact">Player contact (optional)</label>
+            <input id="playerContact" name="playerContact" type="tel" placeholder="If applicable" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="promo">Discount / promo code</label>
+          <div style="display:flex;gap:0.5rem">
+            <input id="promo" name="promo" placeholder="e.g. INAUGURAL10" style="flex:1" />
+            <button class="btn btn-navy" type="button" id="apply-promo">Apply</button>
+          </div>
+          <p class="hint" id="promo-msg">Demo codes: INAUGURAL10 · FLAT500 · DEMO100</p>
+        </div>
+
+        <div class="pay-box">
+          <div>Base fee: <span id="fee-base">₹4,250</span></div>
+          <div>Discount: <span id="fee-discount">—</span></div>
+          <div class="total">Payable: <span id="fee-total">₹4,250</span></div>
+        </div>
+
+        <label class="check-row">
+          <input type="checkbox" name="guardianConsent" required />
+          <span>I am the parent/guardian (or authorised adult) and consent to this registration for a minor where applicable. *</span>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" name="privacyAck" required />
+          <span>I acknowledge the <a href="privacy-policy.html">Privacy Policy</a> (placeholder until approved copy is supplied). *</span>
+        </label>
+
+        <button class="btn btn-gold btn-block" type="submit">Continue to payment</button>
+        <p class="error" id="form-status" role="status"></p>
+      </form>
+
+      <div class="form-panel" id="pay-panel" hidden>
+        <p class="eyebrow">Payment</p>
+        <h2 style="margin:0 0 0.5rem;font-family:var(--font-display);font-size:1.35rem;">Pay registration fee</h2>
+        <p id="pay-summary" style="color:var(--muted)"></p>
+        <p>Reference: <strong id="pay-ref"></strong></p>
+        <p id="payment-mode-badge" class="fee-chip" style="display:inline-block;color:var(--navy);border-color:var(--gold)"></p>
+        <p id="pay-status" class="hint" style="margin-top:0.75rem"></p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1.25rem">
+          <button class="btn btn-gold" type="button" id="pay-demo">Demo Pay (no charge)</button>
+          <button class="btn btn-navy" type="button" id="pay-razorpay">Razorpay (live hook)</button>
+          <button class="btn btn-ghost" type="button" id="back-to-form" style="color:var(--navy);border-color:rgba(4,27,53,0.25)">Back</button>
+        </div>
+        <p class="hint" style="margin-top:1rem">Live Razorpay needs <code>RAZORPAY_KEY_ID</code> (public) and server-side <code>RAZORPAY_KEY_SECRET</code> with create-order + verify endpoints. See README.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-legal">Organised by <strong style="color:var(--gold-soft)">ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD</strong> · <a href="tel:+918013166131">+91 80131 66131</a> · <a href="mailto:CONTACT@AISEORG.INFO">CONTACT@AISEORG.INFO</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

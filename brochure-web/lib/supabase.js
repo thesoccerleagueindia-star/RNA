@@ -17,7 +17,8 @@ async function supabaseInsert(table, row) {
       apikey: config.supabasePublishableKey,
       Authorization: `Bearer ${config.supabasePublishableKey}`,
       "Content-Type": "application/json",
-      Prefer: "return=representation",
+      // Insert-only: return=representation needs SELECT and fails publishable-key RLS.
+      Prefer: "return=minimal",
     },
     body: JSON.stringify(row),
   });
@@ -26,7 +27,7 @@ async function supabaseInsert(table, row) {
   try {
     json = text ? JSON.parse(text) : null;
   } catch {
-    json = { raw: text };
+    json = text ? { raw: text } : null;
   }
   if (!res.ok) {
     const msg =
@@ -38,7 +39,7 @@ async function supabaseInsert(table, row) {
       `Supabase HTTP ${res.status}`;
     throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
   }
-  return { method: "supabase", table, row: Array.isArray(json) ? json[0] : json };
+  return { method: "supabase", table, inserted: row, response: json };
 }
 
 function waitlistRow(record) {

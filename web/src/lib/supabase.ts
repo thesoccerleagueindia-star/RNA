@@ -22,7 +22,7 @@ export async function supabaseInsert(table: string, row: Record<string, unknown>
       apikey: key,
       Authorization: `Bearer ${key}`,
       "Content-Type": "application/json",
-      Prefer: "return=representation",
+      Prefer: "return=minimal",
     },
     body: JSON.stringify(row),
   });

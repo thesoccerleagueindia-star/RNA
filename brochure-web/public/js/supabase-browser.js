@@ -29,7 +29,8 @@
         apikey: supabasePublishableKey,
         Authorization: `Bearer ${supabasePublishableKey}`,
         "Content-Type": "application/json",
-        Prefer: "return=representation",
+        // Insert-only: return=representation requires SELECT and fails RLS (42501).
+        Prefer: "return=minimal",
       },
       body: JSON.stringify(row),
     });
@@ -38,7 +39,7 @@
     try {
       json = text ? JSON.parse(text) : null;
     } catch {
-      json = { raw: text };
+      json = text ? { raw: text } : null;
     }
     if (!res.ok) {
       const msg =
@@ -52,7 +53,8 @@
       err.status = res.status;
       throw err;
     }
-    return Array.isArray(json) ? json[0] : json;
+    // 201 with empty body is success under return=minimal
+    return json;
   }
 
   window.RNA_SUPABASE = {

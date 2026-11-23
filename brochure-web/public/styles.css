@@ -921,6 +921,11 @@ select {
   color: var(--white);
 }
 
+.site-footer .tbc-note {
+  color: rgba(220, 234, 244, 0.62);
+  margin: 0.35rem 0;
+}
+
 .footer-copy {
   margin: 0;
   font-size: 0.78rem;

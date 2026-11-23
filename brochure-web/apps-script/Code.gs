@@ -1,18 +1,25 @@
 /**
  * RNA Clinic India Tour 2027 — Google Apps Script bridge
  *
+ * CONFIRMED SHEET IDS (client)
+ *   WAITLIST_SHEET_ID     = 1DuoOtwG6g_tzNyQi275VxF7QUzMXbNx3ygybODGCzCM
+ *   REGISTRATION_SHEET_ID = 15fKInC0I1udku9ChOvMGoIUYy3ehCzpFNAwsUCIoDnU
+ *
+ * Routing: body.sheet === "waitlist" → Waitlist sheet
+ *          body.sheet === "registration" → Registrations sheet
+ *
  * SETUP
- * 1. Create two Google Sheets: "RNA Clinic Waitlist 2027" and "RNA Clinic Registrations 2027"
- * 2. On each sheet, put headers in row 1 (see SETUP doc) OR leave blank — first write can add headers.
- * 3. Extensions → Apps Script → paste this file.
- * 4. Set Script Properties (Project Settings → Script properties):
- *      WAITLIST_SHEET_ID = <spreadsheet id from URL>
- *      REGISTRATION_SHEET_ID = <spreadsheet id from URL>
- *      ORGANISER_EMAIL = CONTACT@AISEORG.INFO   (optional if Node sends email)
- * 5. Deploy → New deployment → Type: Web app
+ * 1. Put headers in row 1 of each sheet (see backend-setup.md) OR leave blank —
+ *    first write can add headers from the payload.
+ * 2. Extensions → Apps Script → paste this file.
+ * 3. Project Settings → Script properties — set EXACTLY:
+ *      WAITLIST_SHEET_ID     = 1DuoOtwG6g_tzNyQi275VxF7QUzMXbNx3ygybODGCzCM
+ *      REGISTRATION_SHEET_ID = 15fKInC0I1udku9ChOvMGoIUYy3ehCzpFNAwsUCIoDnU
+ *      ORGANISER_EMAIL       = CONTACT@AISEORG.INFO   (optional if Node sends email)
+ * 4. Deploy → New deployment → Type: Web app
  *      Execute as: Me
- *      Who has access: Anyone  (or Anyone with Google account — Node needs to POST)
- * 6. Copy the Web app URL into SHEETS_APPS_SCRIPT_URL on the Node host.
+ *      Who has access: Anyone  (Node must POST without Google login)
+ * 5. Copy the Web app URL into SHEETS_APPS_SCRIPT_URL on the Node host.
  *
  * Optional email-from-script: set EMAIL_VIA_APPS_SCRIPT=true on Node and ensure
  * the script runs as a Google account that can send mail (GmailApp).

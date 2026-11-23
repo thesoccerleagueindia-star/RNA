@@ -15,13 +15,15 @@ type Draft = {
   interest: string;
 };
 
+const RAZORPAY_PAY_URL = eventConfig.razorpayMe.fullFeeUrl;
+
 export default function RegisterPage() {
   const params = useSearchParams();
   const [status, setStatus] = useState("");
   const [promoMsg, setPromoMsg] = useState("Inaugural 10% for the first 40 confirmed registrations only.");
   const [feePreview, setFeePreview] = useState({ base: eventConfig.feeInr, discount: 0, payable: eventConfig.feeInr });
   const [draft, setDraft] = useState<Draft | null>(null);
-  const [done, setDone] = useState<string | null>(null);
+  const [paidRef, setPaidRef] = useState<string | null>(null);
   const [promo, setPromo] = useState("");
 
   const initialCity = params.get("city") || "";
@@ -81,25 +83,10 @@ export default function RegisterPage() {
     });
   }
 
-  async function demoPay() {
+  function payNow() {
     if (!draft) return;
-    const orderRes = await fetch("/api/payments/create-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ registrationId: draft.id }),
-    });
-    const order = await orderRes.json();
-    const verify = await fetch("/api/payments/verify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ registrationId: draft.id, provider: "demo", paymentId: order.orderId }),
-    });
-    const result = await verify.json();
-    if (!verify.ok) {
-      setStatus(result.error || "Payment failed");
-      return;
-    }
-    setDone(result.registration.id);
+    window.open(RAZORPAY_PAY_URL, "_blank", "noopener,noreferrer");
+    setPaidRef(draft.id);
   }
 
   return (
@@ -123,17 +110,34 @@ export default function RegisterPage() {
         <div className="mx-auto max-w-xl">
           <p className="font-display text-xs uppercase tracking-[0.16em] text-[var(--gold)]">Registration</p>
           <h1 className="font-display mt-2 text-3xl">Register for the Clinic</h1>
-          <p className="mt-2 text-white/85">Form, inaugural discount, and payable amount update together.</p>
+          <p className="mt-2 text-white/85">Complete the form, then Pay Now via Razorpay.</p>
         </div>
       </section>
 
       <section className="bg-[var(--mist)] px-4 py-10">
         <div className="mx-auto max-w-xl">
-          {done ? (
+          {paidRef ? (
             <div className="border-t-[3px] border-[var(--gold)] bg-white p-6">
-              <h2 className="font-display text-2xl">Confirmed (demo)</h2>
-              <p className="mt-2">Reference <strong>{done}</strong></p>
-              <Link href="/" className="mt-4 inline-flex bg-[var(--gold)] px-4 py-2 font-semibold text-[var(--navy)]">Back home</Link>
+              <h2 className="font-display text-2xl">Complete payment on Razorpay</h2>
+              <p className="mt-2">Reference <strong>{paidRef}</strong></p>
+              {draft && (
+                <p className="mt-1 text-black/70">
+                  {draft.playerName} · {draft.city} · Payable {formatInr(draft.feePayable)}
+                </p>
+              )}
+              <p className="mt-3 text-sm text-black/65">
+                A Razorpay payment page opened for <strong>ATLETAS INDIA SPORTS AND ENTERTAINMENT</strong>. If it did not open, use the button below.
+              </p>
+              <a
+                href={RAZORPAY_PAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex bg-[var(--gold)] px-4 py-3 font-semibold text-[var(--navy)]"
+              >
+                Open Razorpay Pay Now
+              </a>
+              <p className="mt-3 text-xs text-black/50">Keep your reference ID for confirmation with the organiser.</p>
+              <Link href="/" className="mt-4 block text-sm font-semibold underline">Back to brochure</Link>
             </div>
           ) : !draft ? (
             <form onSubmit={onSubmit} className="border-t-[3px] border-[var(--gold)] bg-white p-6 shadow-sm">
@@ -203,20 +207,30 @@ export default function RegisterPage() {
               <label className="mb-2 flex gap-2 text-sm"><input type="checkbox" required name="consent" /> Guardian consent *</label>
               <label className="mb-4 flex gap-2 text-sm"><input type="checkbox" required name="privacy" /> I agree to Privacy &amp; no-refund policy *</label>
               <button type="submit" className="w-full bg-[var(--gold)] py-3 font-semibold text-[var(--navy)]">
-                Continue · {formatInr(feePreview.payable)}
+                Continue to Pay Now · {formatInr(feePreview.payable)}
               </button>
               {status && <p className="mt-2 font-semibold text-red-700">{status}</p>}
             </form>
           ) : (
             <div className="border-t-[3px] border-[var(--gold)] bg-white p-6">
-              <h2 className="font-display text-2xl">Payment</h2>
+              <h2 className="font-display text-2xl">Pay Now</h2>
               <p className="mt-2 text-black/70">{draft.playerName} · {draft.city} · {draft.interest}</p>
               <p>Reference <strong>{draft.id}</strong></p>
               <p className="mt-2 text-xl font-bold">{formatInr(draft.feePayable)}</p>
               {draft.discount > 0 && <p className="text-sm">Discount applied: {formatInr(draft.discount)}</p>}
-              <button type="button" onClick={() => void demoPay()} className="mt-4 bg-[var(--gold)] px-4 py-2 font-semibold text-[var(--navy)]">
-                Pay {formatInr(draft.feePayable)} (Demo)
+              <button
+                type="button"
+                onClick={payNow}
+                className="mt-4 w-full bg-[var(--gold)] px-4 py-3 font-semibold text-[var(--navy)]"
+              >
+                Pay Now via Razorpay
               </button>
+              <p className="mt-3 text-xs text-black/55">
+                Opens{" "}
+                <a className="underline" href={RAZORPAY_PAY_URL} target="_blank" rel="noopener noreferrer">
+                  razorpay.me/@rnaclinicindia2027
+                </a>
+              </p>
               {status && <p className="mt-2 text-sm font-semibold text-red-700">{status}</p>}
             </div>
           )}

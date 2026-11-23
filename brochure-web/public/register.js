@@ -1,5 +1,8 @@
 (() => {
   const FEE = 4250;
+  /** Live Razorpay.me Pay Now link (organiser payment page). */
+  const RAZORPAY_PAY_URL =
+    "https://razorpay.me/@rnaclinicindia2027?amount=trAZ1UkbSzNzZMEB9OinbA%3D%3D";
   const PROMO = {
     code: "INAUGURAL10",
     type: "percent",
@@ -123,10 +126,10 @@
       discount: check.discount,
       feePayable: check.fee,
       promoCode: check.code,
-      status: "confirmed",
-      paymentStatus: "paid",
-      paymentProvider: "demo",
-      paymentId: `demo_${Date.now()}`,
+      status: "pending_payment",
+      paymentStatus: "unpaid",
+      paymentProvider: "razorpay.me",
+      paymentUrl: RAZORPAY_PAY_URL,
     };
 
     const regs = read(KEY_REGS);
@@ -145,14 +148,21 @@
       write(KEY_PROMO, redemptions);
     }
 
+    window.open(RAZORPAY_PAY_URL, "_blank", "noopener");
+
     form.hidden = true;
     const success = document.querySelector("#success-panel");
     success.hidden = false;
     document.querySelector("#success-body").innerHTML = `
-      Reference <strong>${record.id}</strong><br/>
-      ${record.playerName} · ${record.city} · ${record.interest}<br/>
-      Paid (demo): <strong>${formatInr(record.feePayable)}</strong>
-      ${record.discount ? ` (saved ${formatInr(record.discount)} with ${record.promoCode})` : ""}.
-      <br/><span class="tbc-note">No live card charge on this demo.</span>`;
+      <p>Reference <strong>${record.id}</strong></p>
+      <p>${record.playerName} · ${record.city} · ${record.interest}</p>
+      <p>Payable on form: <strong>${formatInr(record.feePayable)}</strong>${
+        record.discount ? ` (discount ${formatInr(record.discount)})` : ""
+      }</p>
+      <p>Complete payment on the Razorpay page that just opened (ATLETAS INDIA SPORTS AND ENTERTAINMENT).</p>
+      <p style="margin-top:1rem">
+        <a class="btn btn-teal" href="${RAZORPAY_PAY_URL}" target="_blank" rel="noopener">Pay Now via Razorpay</a>
+      </p>
+      <p class="tbc-note">Keep your reference ID for confirmation with the organiser.</p>`;
   });
 })();

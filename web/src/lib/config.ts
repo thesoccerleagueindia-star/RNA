@@ -76,6 +76,13 @@ export const eventConfig = {
       maxRedemptions: 40,
     },
   ],
+  /** Live Razorpay.me payment page for clinic fee. */
+  razorpayMe: {
+    fullFeeUrl:
+      "https://razorpay.me/@rnaclinicindia2027?amount=trAZ1UkbSzNzZMEB9OinbA%3D%3D",
+    baseUrl: "https://razorpay.me/@rnaclinicindia2027",
+    handle: "@rnaclinicindia2027",
+  },
 };
 
 export function paymentMode(): "demo" | "live" {

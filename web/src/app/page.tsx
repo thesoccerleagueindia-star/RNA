@@ -3,17 +3,11 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WaitlistForm } from "@/components/WaitlistForm";
-import { eventConfig, formatInr, paymentMode } from "@/lib/config";
+import { eventConfig, formatInr } from "@/lib/config";
 
 export default function HomePage() {
-  const mode = paymentMode();
   return (
     <>
-      {mode === "demo" && (
-        <div className="bg-[#5c1a24] px-3 py-2 text-center text-sm text-[#ffe8ec]">
-          Demo payment mode — Register Now opens a separate window. No live card charges until Razorpay is configured.
-        </div>
-      )}
       <SiteHeader />
       <main>
         <section className="relative flex min-h-[90vh] items-end overflow-hidden text-white">

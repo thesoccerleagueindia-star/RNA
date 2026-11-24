@@ -16,7 +16,7 @@
   --font-body: 'Manrope', sans-serif;
   --space: clamp(1rem, 2.5vw, 2rem);
   --container: min(1120px, calc(100% - 2 * var(--space)));
-  --header-h: 4.25rem;
+  --header-h: 4.75rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: dark;
 }
@@ -132,8 +132,9 @@ em {
   top: 0;
   z-index: 50;
   height: var(--header-h);
-  background: rgba(8, 8, 8, 0.94);
-  border-bottom: 1px solid var(--line);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  color: #0a0a0a;
 }
 
 .site-header__inner {
@@ -151,11 +152,13 @@ em {
   align-items: center;
   gap: 0.7rem;
   min-height: 44px;
+  flex-shrink: 0;
 }
 
 .brand-lockup img {
   width: auto;
-  height: 2.65rem;
+  height: 2.85rem;
+  max-width: min(220px, 46vw);
   object-fit: contain;
 }
 
@@ -178,14 +181,14 @@ em {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #2a2a2a;
   border-radius: 0.25rem;
   transition: color 0.2s var(--ease);
 }
 
 .desktop-nav a:hover,
 .desktop-nav a[aria-current='page'] {
-  color: var(--white);
+  color: #0a0a0a;
 }
 
 .header-actions {
@@ -200,9 +203,9 @@ em {
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--white);
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  background: #ffffff;
+  color: #0a0a0a;
   cursor: pointer;
 }
 
@@ -211,8 +214,9 @@ em {
   flex-direction: column;
   gap: 0.25rem;
   padding: 1rem var(--space) 1.25rem;
-  background: var(--ink-soft);
-  border-bottom: 1px solid var(--line);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  color: #0a0a0a;
 }
 
 .mobile-nav.is-open {
@@ -226,7 +230,8 @@ em {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--line);
+  color: #0a0a0a;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
 }
 
 @media (min-width: 980px) {

@@ -30,11 +30,10 @@ export function Layout() {
           <Link to="/" className="brand-lockup" aria-label="AISE home">
             <img
               src={media.logoHeader}
-              alt="AISET"
-              width={140}
-              height={40}
+              alt="Atletas India Sports and Entertainment — AISE"
+              width={280}
+              height={71}
             />
-            <span className="brand-lockup__name">AISE</span>
           </Link>
 
           <nav className="desktop-nav" aria-label="Primary">
@@ -98,14 +97,13 @@ export function Layout() {
       <footer className="site-footer">
         <div className="container footer-grid">
           <div className="footer-brand">
-            <Link to="/" className="brand-lockup" aria-label="AISE home">
+            <Link to="/" className="brand-lockup brand-lockup--footer" aria-label="AISE home">
               <img
                 src={media.logoHeader}
-                alt="AISET"
-                width={140}
-                height={40}
+                alt="Atletas India Sports and Entertainment — AISE"
+                width={280}
+                height={71}
               />
-              <span className="brand-lockup__name">AISE</span>
             </Link>
             <p>
               Atletas India Sports and Entertainment Technology. Building

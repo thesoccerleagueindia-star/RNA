@@ -171,9 +171,10 @@ export const teamCredentials = [
 export const INSTAGRAM_URL = 'https://www.instagram.com/tsl_india2026'
 
 export const media = {
-  logo: '/media/aiset-logo.png',
-  logoHeader: '/media/aiset-logo-header.png',
-  logoHero: '/media/aiset-logo-hero.png',
+  logo: '/media/aise-atletas-logo.png',
+  logoHeader: '/media/aise-atletas-logo-header.png',
+  logoHero: '/media/aise-atletas-logo.png',
+  logoLegacy: '/media/aiset-logo.png',
   rsdlLogo: '/media/rising-star-development-league-logo.png',
   hero: '/media/hero-aise-light.jpg',
   heroLegacy: '/media/hero-football.jpg',

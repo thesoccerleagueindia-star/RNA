@@ -28,7 +28,12 @@ export function Layout() {
       <header className="site-header">
         <div className="site-header__inner">
           <Link to="/" className="brand-lockup" aria-label="AISE home">
-            <img src={media.rsdlLogo} alt="" width={40} height={40} />
+            <img
+              src={media.logoHeader}
+              alt="AISET"
+              width={140}
+              height={40}
+            />
             <span className="brand-lockup__name">AISE</span>
           </Link>
 
@@ -94,7 +99,12 @@ export function Layout() {
         <div className="container footer-grid">
           <div className="footer-brand">
             <Link to="/" className="brand-lockup" aria-label="AISE home">
-              <img src={media.rsdlLogo} alt="" width={40} height={40} />
+              <img
+                src={media.logoHeader}
+                alt="AISET"
+                width={140}
+                height={40}
+              />
               <span className="brand-lockup__name">AISE</span>
             </Link>
             <p>

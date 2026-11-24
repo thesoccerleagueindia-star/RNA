@@ -4,11 +4,11 @@ import { media, offerings, partners, whatsappLink } from '../data/content'
 export function Home() {
   return (
     <>
-      <section className="hero" aria-label="Sport in Motion">
+      <section className="hero hero--home" aria-label="Sport in Motion">
         <div className="hero__media">
           <img
             src={media.hero}
-            alt="Athletes competing on a football pitch"
+            alt="Youth athletes in a focused huddle on the pitch"
             width={1600}
             height={900}
             fetchPriority="high"
@@ -25,27 +25,59 @@ export function Home() {
             that bring sport closer to people.
           </p>
           <div className="cta-row">
-            <Link to="/rising-star" className="button">
-              Explore RSDL
+            <Link to="/contact" className="button">
+              Start a conversation
             </Link>
-            <Link to="/contact" className="button button--ghost">
-              Talk to us
+            <Link to="/rising-star" className="button button--ghost">
+              Explore RSDL
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="section section--ink">
+      <section className="section section--ink" id="intro">
+        <div className="container split">
+          <div className="prose">
+            <p className="eyebrow eyebrow--light">01 / Our purpose</p>
+            <h2>
+              Credible sport experiences that turn into <em>opportunity.</em>
+            </h2>
+            <p>
+              From leagues and sports IP to school programmes, international
+              exposure and technology, AISET brings a multi-disciplinary team
+              together to plan, operate and deliver sport at scale.
+            </p>
+            <div className="cta-row">
+              <Link to="/about" className="button button--ghost">
+                Meet AISET
+              </Link>
+            </div>
+          </div>
+          <div className="visual-frame visual-frame--sharp">
+            <img
+              src={media.development}
+              alt="Athletes training under floodlights"
+              width={1600}
+              height={900}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--paper">
         <div className="container">
           <div className="section-heading">
-            <p className="eyebrow eyebrow--light">What we build</p>
-            <h2>From participation to platforms.</h2>
+            <p className="eyebrow">What we build</p>
+            <h2>
+              One organisation. <em>Many ways to play.</em>
+            </h2>
             <p>
               We create credible, high-energy sport experiences that begin with
               participation and extend into leagues, learning and technology.
             </p>
           </div>
-          <div className="offer-list">
+          <div className="offer-list offer-list--paper">
             {offerings.map((item) => (
               <Link key={item.number} to={item.href}>
                 <span className="offer-list__num">{item.number}</span>
@@ -59,50 +91,48 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--paper">
-        <div className="container split">
-          <div className="prose">
-            <p className="eyebrow">Official agency</p>
-            <h2>
-              Rafa Nadal Academy <em>by Movistar</em>
-            </h2>
-            <p>
-              As the official agency in India, AISET helps families, players and
-              partners begin conversations around Rafa Nadal Academy by Movistar
-              experiences.
-            </p>
-            <div className="cta-row">
-              <Link to="/rafa-nadal-academy" className="button button--dark">
-                Discover the partnership
-              </Link>
-            </div>
+      <section className="section section--ink feature-band">
+        <div className="feature-band__media" aria-hidden="true">
+          <img
+            src={media.tennis}
+            alt=""
+            width={1600}
+            height={900}
+            loading="lazy"
+          />
+        </div>
+        <div className="feature-band__scrim" aria-hidden="true" />
+        <div className="container feature-band__content">
+          <p className="eyebrow eyebrow--light">A global pathway</p>
+          <h2>
+            Rafa Nadal Academy <em>by Movistar.</em>
+          </h2>
+          <p>
+            As the official agency in India, AISET helps families, players and
+            partners begin conversations around Rafa Nadal Academy by Movistar
+            experiences.
+          </p>
+          <div className="cta-row">
+            <Link to="/rafa-nadal-academy" className="button">
+              Discover the partnership
+            </Link>
           </div>
-          <div className="visual-frame">
+        </div>
+      </section>
+
+      <section className="section section--paper">
+        <div className="container split split--reverse">
+          <div className="visual-frame visual-frame--sharp">
             <img
-              src={media.tennis}
-              alt="Tennis training at academy level"
+              src={media.development}
+              alt="City-led football competition in action"
               width={1600}
               height={900}
               loading="lazy"
             />
           </div>
-        </div>
-      </section>
-
-      <section className="section section--ink">
-        <div className="container split split--reverse">
-          <div className="visual-frame">
-            <img
-              src={media.rsdlLogo}
-              alt="Rising Star Development League crest"
-              width={640}
-              height={640}
-              loading="lazy"
-              style={{ objectFit: 'contain', padding: '2rem', background: '#0a0a0a' }}
-            />
-          </div>
           <div className="prose">
-            <p className="eyebrow eyebrow--light">League property</p>
+            <p className="eyebrow">League property</p>
             <h2>
               Rising Star <em>Development League</em>
             </h2>
@@ -111,11 +141,11 @@ export function Home() {
               and build a verified match story — individually, city by city.
             </p>
             <div className="cta-row">
-              <Link to="/rising-star" className="button">
+              <Link to="/rising-star" className="button button--dark">
                 View RSDL cities
               </Link>
               <a
-                className="button button--ghost"
+                className="button"
                 href={whatsappLink('/rising-star')}
                 target="_blank"
                 rel="noreferrer"
@@ -144,8 +174,10 @@ export function Home() {
       <section className="section section--ink">
         <div className="container">
           <div className="section-heading">
-            <p className="eyebrow eyebrow--light">AISET Global Partners</p>
-            <h2>Built with organisations that move sport forward.</h2>
+            <p className="eyebrow eyebrow--light">Global partners</p>
+            <h2>
+              Building sport <em>together.</em>
+            </h2>
             <p>
               AISET is proud to work with organisations spanning sport,
               education, technology, player pathways and international
@@ -165,15 +197,17 @@ export function Home() {
       <section className="section section--paper">
         <div className="container split">
           <div className="prose">
-            <p className="eyebrow">Next conversation</p>
-            <h2>Build the next chapter.</h2>
+            <p className="eyebrow">Build the next chapter</p>
+            <h2>
+              Ready to put <em>sport in motion?</em>
+            </h2>
             <p>
               Whether you are exploring a sports programme, league, academy
               pathway, product or partnership, our team is ready to begin.
             </p>
             <div className="cta-row">
               <Link to="/contact" className="button button--dark">
-                Contact AISET
+                Make an enquiry
               </Link>
               <a
                 className="button"
@@ -186,7 +220,7 @@ export function Home() {
               </a>
             </div>
           </div>
-          <div className="visual-frame">
+          <div className="visual-frame visual-frame--sharp">
             <img
               src={media.exposure}
               alt="Athletes and coaches in a high-energy sport setting"

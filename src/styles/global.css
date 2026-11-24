@@ -280,6 +280,17 @@ em {
   color: var(--white);
 }
 
+.button--outline {
+  background: #ffffff;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.button--outline:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
 .button--dark {
   background: var(--ink);
   color: var(--white);
@@ -318,6 +329,7 @@ em {
   align-items: end;
   overflow: hidden;
   isolation: isolate;
+  background: #ffffff;
 }
 
 .hero__media {
@@ -330,8 +342,8 @@ em {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
-  transform: scale(1.03);
+  object-position: 72% center;
+  transform: scale(1.02);
   animation: hero-drift 24s var(--ease) infinite alternate;
 }
 
@@ -339,18 +351,25 @@ em {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* Live-site clarity: left readability only — photo stays crisp */
-  background: linear-gradient(
-    100deg,
-    rgba(4, 10, 18, 0.78) 0%,
-    rgba(4, 10, 18, 0.42) 34%,
-    rgba(4, 10, 18, 0.12) 62%,
-    rgba(4, 10, 18, 0) 100%
-  );
+}
+
+.hero--light .hero__scrim {
+  /* White premium field for black type; photo remains sharp on the right */
+  background:
+    linear-gradient(
+      95deg,
+      #ffffff 0%,
+      #ffffff 36%,
+      rgba(255, 255, 255, 0.92) 48%,
+      rgba(255, 255, 255, 0.55) 62%,
+      rgba(255, 255, 255, 0.12) 78%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.35) 0%, transparent 28%);
 }
 
 .hero--home .hero__content {
-  max-width: 44rem;
+  max-width: 40rem;
   padding-bottom: clamp(3.25rem, 9vw, 5.75rem);
 }
 
@@ -362,33 +381,54 @@ em {
   animation: rise-in 0.7s var(--ease) both;
 }
 
-.hero h1 {
-  color: #fff;
+.hero--light h1 {
+  color: #0a0a0a;
   font-size: clamp(3.6rem, 12vw, 7.4rem);
   line-height: 0.86;
   max-width: 9ch;
   letter-spacing: 0.01em;
 }
 
-.hero h1 em {
+.hero--light h1 em {
   color: var(--orange);
 }
 
-.hero__brand {
+.hero--light .hero__brand {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.1rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   margin-bottom: 0.55rem;
-  color: #fff;
+  color: #0a0a0a;
 }
 
-.hero__support {
+.hero--light .hero__support {
   margin-top: 1.15rem;
   max-width: 34rem;
-  color: #f3f3f0;
+  color: #1a1a1a;
   font-size: clamp(1.05rem, 2vw, 1.22rem);
   line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  .hero--light .hero__scrim {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.82) 0%,
+        rgba(255, 255, 255, 0.72) 38%,
+        rgba(255, 255, 255, 0.42) 62%,
+        rgba(255, 255, 255, 0.12) 100%
+      );
+  }
+
+  .hero--light .hero__media img {
+    object-position: 65% 18%;
+  }
+
+  .hero--light {
+    align-items: center;
+  }
 }
 
 .page-hero {

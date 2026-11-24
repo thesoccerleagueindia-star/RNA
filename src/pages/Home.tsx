@@ -4,13 +4,13 @@ import { media, offerings, partners, whatsappLink } from '../data/content'
 export function Home() {
   return (
     <>
-      <section className="hero hero--home" aria-label="Sport in Motion">
+      <section className="hero hero--home hero--light" aria-label="Sport in Motion">
         <div className="hero__media">
           <img
             src={media.hero}
-            alt="Youth athletes in a focused huddle on the pitch"
-            width={1600}
-            height={900}
+            alt="Athletes training in bright daylight on a football pitch"
+            width={1920}
+            height={1080}
             fetchPriority="high"
           />
         </div>
@@ -28,7 +28,7 @@ export function Home() {
             <Link to="/contact" className="button">
               Start a conversation
             </Link>
-            <Link to="/rising-star" className="button button--ghost">
+            <Link to="/rising-star" className="button button--outline">
               Explore RSDL
             </Link>
           </div>

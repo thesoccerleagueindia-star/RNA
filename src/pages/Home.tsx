@@ -4,35 +4,34 @@ import { media, offerings, partners, whatsappLink } from '../data/content'
 export function Home() {
   return (
     <>
-      <section className="hero hero--home hero--split" aria-label="Sport in Motion">
-        <div className="hero__panel">
-          <div className="hero__content">
-            <p className="hero__brand">AISE</p>
-            <h1>
-              Sport in <em>Motion.</em>
-            </h1>
-            <p className="hero__support">
-              Leagues, learning pathways, products and platforms that bring
-              sport closer to people.
-            </p>
-            <div className="cta-row">
-              <Link to="/contact" className="button">
-                Start a conversation
-              </Link>
-              <Link to="/rising-star" className="button button--outline">
-                Explore RSDL
-              </Link>
-            </div>
-          </div>
-        </div>
+      <section className="hero hero--home hero--bleed" aria-label="Sport in Motion">
         <div className="hero__media">
           <img
             src={media.hero}
-            alt="Athletes competing in white and orange kits under stadium lights"
+            alt="Sports management team reviewing programmes and athlete pathways at a performance campus"
             width={1920}
             height={1080}
             fetchPriority="high"
           />
+        </div>
+        <div className="hero__veil" aria-hidden="true" />
+        <div className="hero__content">
+          <p className="hero__brand">AISE</p>
+          <h1>
+            Sport in <em>Motion.</em>
+          </h1>
+          <p className="hero__support">
+            An agency for leagues, learning pathways, products and platforms
+            that bring sport closer to people.
+          </p>
+          <div className="cta-row">
+            <Link to="/contact" className="button">
+              Start a conversation
+            </Link>
+            <Link to="/programmes" className="button button--ghost">
+              Explore programmes
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -353,7 +353,7 @@ em {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 72% center;
+  object-position: 62% center;
   display: block;
   opacity: 1;
   filter: none;
@@ -372,9 +372,9 @@ em {
   /* Light ink for type only — never a white/muddy wash */
   background: linear-gradient(
     100deg,
-    rgba(10, 10, 10, 0.55) 0%,
-    rgba(10, 10, 10, 0.28) 26%,
-    rgba(10, 10, 10, 0.08) 44%,
+    rgba(10, 10, 10, 0.62) 0%,
+    rgba(10, 10, 10, 0.32) 24%,
+    rgba(10, 10, 10, 0.1) 42%,
     rgba(10, 10, 10, 0) 58%
   );
 }
@@ -442,7 +442,7 @@ em {
   }
 
   .hero--bleed .hero__media img {
-    object-position: 78% 40%;
+    object-position: 70% 45%;
   }
 
   .hero--bleed .hero__veil {

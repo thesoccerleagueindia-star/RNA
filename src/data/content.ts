@@ -186,28 +186,34 @@ export const rsdlYouthGallery = [
 
 export const isbiCourses = [
   {
-    title: 'BBA',
-    copy: 'An upcoming undergraduate route for people seeking a business foundation through the lens of sport.',
+    number: '01',
+    title: 'Two Year Advanced Diploma',
+    duration: '2 years',
+    copy: 'An immersive advanced diploma pathway for learners ready to build deep sports-business capability across operations, leadership and industry practice.',
   },
   {
-    title: 'MBA',
-    copy: 'An upcoming postgraduate pathway for emerging professionals ready to explore sport, business and leadership.',
+    number: '02',
+    title: 'One and Half Year Postgraduate Program',
+    duration: '1.5 years',
+    copy: 'A focused postgraduate route for emerging professionals exploring sport, business strategy and leadership with an international outlook.',
   },
   {
-    title: 'DBA',
-    copy: 'An upcoming advanced business programme for professionals interested in deeper inquiry and sport-sector leadership.',
+    number: '03',
+    title: 'One Year Executive Post Graduate Program',
+    duration: '1 year',
+    copy: 'An executive postgraduate programme designed for working professionals seeking accelerated, sector-relevant leadership development in sport.',
   },
   {
-    title: 'PGDSM',
-    copy: 'An upcoming postgraduate diploma pathway focused on the changing practice of sports management.',
+    number: '04',
+    title: 'Four Year International Sports Business and Leadership Program',
+    duration: '4 years',
+    copy: 'A comprehensive international programme combining sports business foundations with leadership development for long-horizon careers in the global sports economy.',
   },
   {
-    title: 'Diploma',
-    copy: 'An upcoming focused route designed to help learners build sector-relevant foundations and confidence.',
-  },
-  {
-    title: 'Crash courses',
-    copy: 'Short upcoming learning experiences for people taking their first informed steps into sports management.',
+    number: '05',
+    title: 'Diploma in Sports Strength and Conditioning and Rehab',
+    duration: 'Diploma',
+    copy: 'A specialised diploma focused on strength and conditioning and rehabilitation practice within modern performance sport environments.',
   },
 ]
 

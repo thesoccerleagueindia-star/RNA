@@ -8,7 +8,7 @@ export function Home() {
         <div className="hero__media">
           <img
             src={media.hero}
-            alt="Athletes training at dusk under stadium lights across a multi-sport complex"
+            alt="Multi-sport collage of football, tennis, athletics and training under stadium lights"
             width={1920}
             height={1080}
             fetchPriority="high"
@@ -21,8 +21,8 @@ export function Home() {
             Sport in <em>Motion.</em>
           </h1>
           <p className="hero__support">
-            Building leagues, pathways and programmes that put real sport
-            energy in motion.
+            Leagues, academies, pathways and programmes across sport — built
+            to move people.
           </p>
           <div className="cta-row">
             <Link to="/contact" className="button">

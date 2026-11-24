@@ -6,12 +6,26 @@ export function Home() {
     <>
       <section className="hero hero--home hero--light" aria-label="Sport in Motion">
         <div className="hero__media">
+          <video
+            className="hero__video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={media.heroMontagePoster}
+            aria-label="Programme montage: RSDL, Rafa Nadal Academy, Athlexna, ISBI, After School Programme, Sports Tours"
+          >
+            <source src={media.heroMontage} type="video/mp4" />
+          </video>
           <img
-            src={media.hero}
-            alt="Athletes training in bright daylight on a football pitch"
+            className="hero__poster"
+            src={media.heroMontagePoster}
+            alt=""
             width={1920}
             height={1080}
             fetchPriority="high"
+            aria-hidden="true"
           />
         </div>
         <div className="hero__scrim" aria-hidden="true" />

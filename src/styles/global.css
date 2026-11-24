@@ -343,13 +343,30 @@ em {
   z-index: -2;
 }
 
-.hero__media img {
+.hero__media img,
+.hero__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 72% center;
+}
+
+.hero__media img {
   transform: scale(1.02);
   animation: hero-drift 24s var(--ease) infinite alternate;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #0a0a0a;
+}
+
+.hero__poster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
 .hero__scrim {
@@ -359,7 +376,7 @@ em {
 }
 
 .hero--light .hero__scrim {
-  /* White premium field for black type; photo remains sharp on the right */
+  /* White premium field for black type; montage stays sharp on the right */
   background:
     linear-gradient(
       95deg,
@@ -371,6 +388,17 @@ em {
       rgba(255, 255, 255, 0) 100%
     ),
     linear-gradient(0deg, rgba(255, 255, 255, 0.35) 0%, transparent 28%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__video {
+    display: none;
+  }
+
+  .hero__poster {
+    animation: none;
+    transform: none;
+  }
 }
 
 .hero--home .hero__content {
@@ -427,8 +455,9 @@ em {
       );
   }
 
-  .hero--light .hero__media img {
-    object-position: 65% 18%;
+  .hero--light .hero__media img,
+  .hero--light .hero__media video {
+    object-position: 58% center;
   }
 
   .hero--light {

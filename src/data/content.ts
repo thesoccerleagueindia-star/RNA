@@ -234,6 +234,8 @@ export const media = {
   rsdlLogo: '/media/rising-star-development-league-logo.png',
   rsdlHero: '/media/rsdl-hero-football.jpg',
   hero: '/media/hero-aise-light.jpg',
+  heroMontage: '/media/hero-montage.mp4',
+  heroMontagePoster: '/media/hero-montage-poster.jpg',
   heroLegacy: '/media/hero-football.jpg',
   tennis: '/media/tennis-partnership.jpg',
   programmes: '/media/school-program.jpg',

@@ -33,7 +33,7 @@ export function Athlexna() {
             <div className="cta-row">
               <a
                 className="button button--dark"
-                href="https://athlexna.com"
+                href="https://www.athlexna.com"
                 target="_blank"
                 rel="noreferrer"
               >

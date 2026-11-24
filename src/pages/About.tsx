@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { PageHero } from '../components/PageHero'
-import { media, partners } from '../data/content'
+import { media, partners, teamCredentials } from '../data/content'
 
 export function About() {
   return (
@@ -9,21 +9,25 @@ export function About() {
         eyebrow="About AISET"
         title={
           <>
-            Sport experiences from India to the <em>world.</em>
+            Built by people who believe in <em>sport.</em>
           </>
         }
-        support="Atletas India Sports and Entertainment Technology builds leagues, programmes, pathways and platforms that bring sport closer to people."
+        support="AISET is a sports management and technology organisation focused on operating, managing and delivering meaningful sport experiences."
         image={media.exposure}
       />
 
       <section className="section section--paper">
         <div className="container prose">
-          <p className="eyebrow">Who we are</p>
-          <h2>Multi-disciplinary sport delivery.</h2>
+          <p className="eyebrow">01 / Our mission</p>
+          <h2>
+            Make sport more accessible, organised and <em>inspiring.</em>
+          </h2>
           <p>
-            From leagues and sports IP to school programmes, international
-            exposure and technology, AISET brings a multi-disciplinary team
-            together to plan, operate and deliver sport at scale.
+            To make sport more accessible, organised and inspiring for every
+            community we serve. We work across leagues, sports IP, products,
+            training programmes, tours and technology—bringing practical
+            operations together with a long-term view of participation and
+            potential.
           </p>
           <p>
             Publicly known as AISE, we create credible, high-energy sport
@@ -36,7 +40,39 @@ export function About() {
       <section className="section section--ink">
         <div className="container">
           <div className="section-heading">
-            <p className="eyebrow eyebrow--light">How we work</p>
+            <p className="eyebrow eyebrow--light">A multi-disciplinary team</p>
+            <h2>
+              Different disciplines. <em>One sporting intent.</em>
+            </h2>
+          </div>
+          <div className="offer-list">
+            {teamCredentials.map((item, i) => (
+              <div
+                key={item}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'auto 1fr',
+                  gap: '1rem',
+                  padding: '1.1rem 0',
+                  borderBottom: '1px solid rgba(255,255,255,0.12)',
+                }}
+              >
+                <span className="offer-list__num">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 style={{ textTransform: 'none', letterSpacing: 0 }}>
+                  {item}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--paper">
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">How we work</p>
             <h2>Leagues. Learning. Technology. Tours.</h2>
           </div>
           <div className="feature-grid">
@@ -63,20 +99,20 @@ export function About() {
             </article>
           </div>
           <div className="cta-row">
-            <Link to="/contact" className="button">
-              Explore working with us
+            <Link to="/contact" className="button button--dark">
+              Bring your next sporting idea to life
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section section--ink">
         <div className="container">
           <div className="section-heading">
-            <p className="eyebrow">Partners</p>
+            <p className="eyebrow eyebrow--light">Partners</p>
             <h2>Organisations we are proud to work alongside.</h2>
           </div>
-          <div className="offer-list" style={{ borderColor: 'rgba(10,10,10,0.12)' }}>
+          <div className="offer-list">
             {partners.map((name, i) => (
               <div
                 key={name}
@@ -85,7 +121,7 @@ export function About() {
                   gridTemplateColumns: 'auto 1fr',
                   gap: '1rem',
                   padding: '0.9rem 0',
-                  borderBottom: '1px solid rgba(10,10,10,0.12)',
+                  borderBottom: '1px solid rgba(255,255,255,0.12)',
                 }}
               >
                 <span className="offer-list__num">

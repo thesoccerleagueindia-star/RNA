@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
   CONTACT_EMAIL,
+  INSTAGRAM_URL,
   WHATSAPP_DISPLAY,
   media,
   navItems,
@@ -118,6 +119,9 @@ export function Layout() {
             <a href={wa} target="_blank" rel="noreferrer">
               WhatsApp {WHATSAPP_DISPLAY}
             </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+              Instagram
+            </a>
             <a href="https://www.aiseorg.info" target="_blank" rel="noreferrer">
               www.aiseorg.info
             </a>
@@ -127,8 +131,8 @@ export function Layout() {
         </div>
 
         <div className="container footer-bottom">
-          <p>© {new Date().getFullYear()} AISET / AISE. Sport in Motion.</p>
-          <p>Official agency of Rafa Nadal Academy by Movistar in India.</p>
+          <p>© {new Date().getFullYear()} AISET / AISE. Sport. Technology. Possibility.</p>
+          <p>India · Australia · Official agency of Rafa Nadal Academy by Movistar in India.</p>
         </div>
       </footer>
     </div>

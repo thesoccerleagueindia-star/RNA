@@ -63,6 +63,11 @@ export function Contact() {
               </a>
             </p>
             <p>
+              <strong>Regions</strong>
+              <br />
+              India · Australia
+            </p>
+            <p>
               <strong>Available by WhatsApp</strong>
               <br />
               Messages are welcome anytime. Our team typically replies during

@@ -108,14 +108,14 @@ export const partners = [
 
 export const rsdlCities = [
   {
-    city: 'Bengaluru',
+    city: 'Hyderabad',
     dates: 'Registration: 26 May – 8 June',
-    image: '/media/bangalore-registration.png',
+    image: '/media/hyderabad-registration.png',
   },
   {
-    city: 'Hyderabad',
+    city: 'Bangalore',
     dates: 'Registration: 26 May – 16 June',
-    image: '/media/hyderabad-registration.png',
+    image: '/media/bangalore-registration.png',
   },
   {
     city: 'Indore',
@@ -136,30 +136,39 @@ export const rsdlCities = [
 
 export const isbiCourses = [
   {
-    title: 'Undergraduate',
+    title: 'BBA',
     copy: 'An upcoming undergraduate route for people seeking a business foundation through the lens of sport.',
   },
   {
-    title: 'Postgraduate',
+    title: 'MBA',
     copy: 'An upcoming postgraduate pathway for emerging professionals ready to explore sport, business and leadership.',
   },
   {
-    title: 'Advanced business',
+    title: 'DBA',
     copy: 'An upcoming advanced business programme for professionals interested in deeper inquiry and sport-sector leadership.',
   },
   {
-    title: 'Postgraduate diploma',
+    title: 'PGDSM',
     copy: 'An upcoming postgraduate diploma pathway focused on the changing practice of sports management.',
   },
   {
-    title: 'Foundations',
+    title: 'Diploma',
     copy: 'An upcoming focused route designed to help learners build sector-relevant foundations and confidence.',
   },
   {
-    title: 'Short courses',
+    title: 'Crash courses',
     copy: 'Short upcoming learning experiences for people taking their first informed steps into sports management.',
   },
 ]
+
+export const teamCredentials = [
+  'Sports Management MBA — IISWBM Kolkata',
+  'Marketing Management MBA — IMI Delhi',
+  'M.Tech — IIT',
+  'PhD Law — Vinoba Bhave University',
+]
+
+export const INSTAGRAM_URL = 'https://www.instagram.com/tsl_india2026'
 
 export const media = {
   logo: '/media/aiset-logo-transparent.png',

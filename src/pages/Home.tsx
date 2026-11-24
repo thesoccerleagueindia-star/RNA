@@ -4,7 +4,27 @@ import { media, offerings, partners, whatsappLink } from '../data/content'
 export function Home() {
   return (
     <>
-      <section className="hero hero--home hero--light" aria-label="Sport in Motion">
+      <section className="hero hero--home hero--split" aria-label="Sport in Motion">
+        <div className="hero__panel">
+          <div className="hero__content">
+            <p className="hero__brand">AISE</p>
+            <h1>
+              Sport in <em>Motion.</em>
+            </h1>
+            <p className="hero__support">
+              AISET builds the leagues, learning pathways, products and platforms
+              that bring sport closer to people.
+            </p>
+            <div className="cta-row">
+              <Link to="/contact" className="button">
+                Start a conversation
+              </Link>
+              <Link to="/rising-star" className="button button--outline">
+                Explore RSDL
+              </Link>
+            </div>
+          </div>
+        </div>
         <div className="hero__media">
           <video
             className="hero__video"
@@ -27,25 +47,6 @@ export function Home() {
             fetchPriority="high"
             aria-hidden="true"
           />
-        </div>
-        <div className="hero__scrim" aria-hidden="true" />
-        <div className="hero__content">
-          <p className="hero__brand">AISE</p>
-          <h1>
-            Sport in <em>Motion.</em>
-          </h1>
-          <p className="hero__support">
-            AISET builds the leagues, learning pathways, products and platforms
-            that bring sport closer to people.
-          </p>
-          <div className="cta-row">
-            <Link to="/contact" className="button">
-              Start a conversation
-            </Link>
-            <Link to="/rising-star" className="button button--outline">
-              Explore RSDL
-            </Link>
-          </div>
         </div>
       </section>
 

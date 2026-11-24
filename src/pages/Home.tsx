@@ -12,8 +12,8 @@ export function Home() {
               Sport in <em>Motion.</em>
             </h1>
             <p className="hero__support">
-              AISET builds the leagues, learning pathways, products and platforms
-              that bring sport closer to people.
+              Leagues, learning pathways, products and platforms that bring
+              sport closer to people.
             </p>
             <div className="cta-row">
               <Link to="/contact" className="button">
@@ -26,26 +26,12 @@ export function Home() {
           </div>
         </div>
         <div className="hero__media">
-          <video
-            className="hero__video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={media.heroMontagePoster}
-            aria-label="Programme montage: RSDL, Rafa Nadal Academy, Athlexna, ISBI, After School Programme, Sports Tours"
-          >
-            <source src={media.heroMontage} type="video/mp4" />
-          </video>
           <img
-            className="hero__poster"
-            src={media.heroMontagePoster}
-            alt=""
+            src={media.hero}
+            alt="Athletes competing in white and orange kits under stadium lights"
             width={1920}
             height={1080}
             fetchPriority="high"
-            aria-hidden="true"
           />
         </div>
       </section>

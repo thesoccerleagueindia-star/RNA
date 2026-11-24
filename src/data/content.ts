@@ -108,29 +108,79 @@ export const partners = [
 
 export const rsdlCities = [
   {
-    city: 'Hyderabad',
-    dates: 'Registration: 26 May – 8 June',
-    image: '/media/hyderabad-registration.png',
-  },
-  {
-    city: 'Bangalore',
-    dates: 'Registration: 26 May – 16 June',
-    image: '/media/bangalore-registration.png',
-  },
-  {
-    city: 'Indore',
-    dates: 'Registration: 26 May – 20 June',
-    image: '/media/indore-registration.png',
-  },
-  {
-    city: 'Kolkata',
-    dates: 'Registration: 26 May – 20 June',
-    image: '/media/kolkata-registration.png',
+    city: 'Mumbai',
+    landmark: 'Gateway of India',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-mumbai.jpg',
   },
   {
     city: 'Thane',
-    dates: 'U8–U21 · Registration: 15 May – 15 June · Begins 20 June',
-    image: '/media/thane-registration.jpg',
+    landmark: 'Lakeside cityscape',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-thane.jpg',
+  },
+  {
+    city: 'Bangalore',
+    landmark: 'Vidhana Soudha',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-bangalore.jpg',
+  },
+  {
+    city: 'Kolkata',
+    landmark: 'Howrah Bridge',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-kolkata.jpg',
+  },
+  {
+    city: 'Goa',
+    landmark: 'Coastline',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-goa.jpg',
+  },
+  {
+    city: 'Chennai',
+    landmark: 'Marina Beach',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-chennai.jpg',
+  },
+  {
+    city: 'Hyderabad',
+    landmark: 'Charminar',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-hyderabad.jpg',
+  },
+  {
+    city: 'Kerala',
+    landmark: 'Backwaters',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-kerala.jpg',
+  },
+  {
+    city: 'Manipur',
+    landmark: 'Loktak Lake',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-manipur.jpg',
+  },
+  {
+    city: 'Meghalaya',
+    landmark: 'Living root bridges',
+    status: 'RSDL is coming soon',
+    image: '/media/rsdl-city-meghalaya.jpg',
+  },
+]
+
+export const rsdlYouthGallery = [
+  {
+    src: '/media/rsdl-youth-play-1.jpg',
+    alt: 'Students playing football on a school ground',
+  },
+  {
+    src: '/media/rsdl-youth-play-2.jpg',
+    alt: 'Youth footballers training with drills',
+  },
+  {
+    src: '/media/rsdl-youth-play-3.jpg',
+    alt: 'Teenage players competing in a football match',
   },
 ]
 
@@ -176,6 +226,7 @@ export const media = {
   logoHero: '/media/aise-atletas-logo.png',
   logoLegacy: '/media/aiset-logo.png',
   rsdlLogo: '/media/rising-star-development-league-logo.png',
+  rsdlHero: '/media/rsdl-hero-football.jpg',
   hero: '/media/hero-aise-light.jpg',
   heroLegacy: '/media/hero-football.jpg',
   tennis: '/media/tennis-partnership.jpg',

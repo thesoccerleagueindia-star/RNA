@@ -578,26 +578,26 @@ em {
 .visual-frame--logo {
   display: grid;
   place-items: center;
-  min-height: clamp(280px, 42vw, 520px);
+  min-height: clamp(340px, 48vw, 580px);
   background:
     radial-gradient(
       circle at 50% 42%,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(244, 246, 250, 0.92) 55%,
-      rgba(230, 234, 242, 0.88) 100%
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(244, 246, 250, 0.94) 55%,
+      rgba(230, 234, 242, 0.9) 100%
     );
   border: 1px solid var(--line-dark);
 }
 
 .visual-frame--logo img {
-  width: min(100%, 28rem);
+  width: min(100%, 34rem);
   height: auto;
   min-height: 0;
-  max-height: clamp(16rem, 38vw, 26rem);
+  max-height: clamp(22rem, 52vw, 34rem);
   object-fit: contain;
   aspect-ratio: auto;
   filter: none;
-  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  padding: clamp(0.35rem, 1.5vw, 0.85rem);
 }
 
 .section-heading-split {

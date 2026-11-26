@@ -1,5 +1,5 @@
 import { createRequire } from "node:module";
-import { mkdir, copyFile, access } from "node:fs/promises";
+import { mkdir, access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -8,8 +8,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const htmlPath = path.join(__dirname, "brochure.html");
 const docsDir = "/cursor/stores/self/docs";
+const mediaDir = "/cursor/stores/self/media";
 const printOut = path.join(docsDir, "brochure-print.pdf");
 const digitalOut = path.join(docsDir, "brochure-digital.pdf");
+const benefitsPreview = path.join(mediaDir, "brochure-benefits-preview.png");
 
 async function ensurePuppeteer() {
   try {
@@ -50,8 +52,8 @@ async function main() {
     await new Promise((r) => setTimeout(r, 800));
 
     await mkdir(docsDir, { recursive: true });
+    await mkdir(mediaDir, { recursive: true });
 
-    // Print-ready: high quality, no compression preference
     await page.pdf({
       path: printOut,
       printBackground: true,
@@ -61,8 +63,6 @@ async function main() {
       margin: { top: "0", right: "0", bottom: "0", left: "0" },
     });
 
-    // Digital: same layout; Chrome PDF is already reasonably compressed.
-    // Re-export with tagged PDF / outline omitted for slightly leaner file.
     await page.pdf({
       path: digitalOut,
       printBackground: true,
@@ -74,9 +74,56 @@ async function main() {
       outline: false,
     });
 
-    const okPrint = await fileExists(printOut);
-    const okDigital = await fileExists(digitalOut);
-    console.log(JSON.stringify({ printOut, digitalOut, okPrint, okDigital }, null, 2));
+    // Preview of benefits page (3rd .page section)
+    const box = await page.evaluate(() => {
+      const pages = [...document.querySelectorAll("section.page")];
+      const benefits = pages.find((el) => el.classList.contains("benefits-page")) || pages[2];
+      if (!benefits) return null;
+      const r = benefits.getBoundingClientRect();
+      return {
+        x: r.x,
+        y: r.y + window.scrollY,
+        width: r.width,
+        height: r.height,
+        index: pages.indexOf(benefits) + 1,
+        total: pages.length,
+      };
+    });
+
+    if (box) {
+      await page.setViewport({
+        width: Math.ceil(box.width),
+        height: Math.ceil(box.height),
+        deviceScaleFactor: 2,
+      });
+      await page.screenshot({
+        path: benefitsPreview,
+        type: "png",
+        clip: {
+          x: box.x,
+          y: box.y,
+          width: box.width,
+          height: box.height,
+        },
+      });
+    }
+
+    console.log(
+      JSON.stringify(
+        {
+          printOut,
+          digitalOut,
+          benefitsPreview,
+          benefitsPageNumber: box?.index ?? null,
+          totalPages: box?.total ?? null,
+          okPrint: await fileExists(printOut),
+          okDigital: await fileExists(digitalOut),
+          okPreview: await fileExists(benefitsPreview),
+        },
+        null,
+        2
+      )
+    );
   } finally {
     await browser.close();
   }

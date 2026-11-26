@@ -17,9 +17,10 @@
     :root {
       --navy: #041b35;
       --navy-mid: #0a2a4d;
-      --gold: #c9a227;
-      --gold-soft: #e8d28a;
-      --red: #9e1b2e;
+      --green: #b8e14a;
+      --green-deep: #8fbf22;
+      --green-soft: #dcefa0;
+      --blue: #1464a8;
       --white: #ffffff;
       --mist: #f3f6f9;
       --ink-muted: rgba(4, 27, 53, 0.68);
@@ -97,7 +98,7 @@
       top: 0;
       bottom: 0;
       width: 2.2mm;
-      background: linear-gradient(180deg, var(--gold) 0%, var(--gold) 70%, var(--red) 100%);
+      background: linear-gradient(180deg, var(--green) 0%, var(--blue) 100%);
       z-index: 2;
     }
     .cover-content {
@@ -131,7 +132,7 @@
     .cover-logo-x {
       font-family: "Monument Extended", sans-serif;
       font-size: 10pt;
-      color: var(--gold);
+      color: var(--green);
       letter-spacing: 0.08em;
     }
     .cover-logo-academy {
@@ -167,7 +168,7 @@
       font-size: 8.5pt;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold-soft);
+      color: var(--green-soft);
     }
     .cover-title {
       margin: auto 0 0;
@@ -175,12 +176,12 @@
       line-height: 1.08;
       max-width: 168mm;
     }
-    .cover-title .gold { color: var(--gold); display: block; margin-top: 1.5mm; }
+    .cover-title .accent { color: var(--green); display: block; margin-top: 1.5mm; }
     .cover-support {
       margin: 5mm 0 3mm;
       font-size: 12pt;
       font-weight: 500;
-      color: var(--gold-soft);
+      color: var(--green-soft);
     }
     .cover-cities {
       margin: 0 0 8mm;
@@ -198,14 +199,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .pill-gold { background: var(--gold); color: var(--navy); }
+    .pill-green { background: var(--green); color: var(--navy); }
     .pill-outline { border: 1pt solid rgba(255,255,255,0.55); color: var(--white); }
     .cover-meta {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 4mm;
       margin-top: auto;
-      border-top: 1.25pt solid rgba(201,162,39,0.55);
+      border-top: 1.25pt solid rgba(184,225,74,0.55);
       padding-top: 4mm;
     }
     .cover-meta strong { display: block; font-size: 9.5pt; margin-bottom: 1mm; }
@@ -224,7 +225,7 @@
       font-size: 8pt;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--green);
     }
     .page-h {
       margin: 0;
@@ -242,7 +243,7 @@
     .rule {
       height: 1.25pt;
       width: 16mm;
-      background: var(--red);
+      background: var(--green-deep);
       margin: 3.5mm 0 4.5mm;
     }
 
@@ -316,7 +317,7 @@
       font-size: 7.5pt;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--green);
       margin: 0 0 2mm;
     }
     .organiser-box .name {
@@ -341,7 +342,7 @@
       margin-top: 3.5mm;
     }
     .focus-item {
-      border-left: 2pt solid var(--red);
+      border-left: 2pt solid var(--green-deep);
       padding: 1.5mm 0 1.5mm 2.5mm;
       font-size: 8.5pt;
       font-weight: 600;
@@ -350,7 +351,7 @@
       margin-top: 3.5mm;
       font-size: 8pt;
       color: var(--ink-muted);
-      border-left: 2pt solid var(--gold);
+      border-left: 2pt solid var(--green);
       padding-left: 3mm;
       line-height: 1.4;
     }
@@ -367,12 +368,12 @@
       border: 1pt solid rgba(4,27,53,0.1);
       border-top: 3pt solid var(--navy);
     }
-    .pathway-card.camp { border-top-color: var(--red); }
+    .pathway-card.camp { border-top-color: var(--green-deep); }
     .pathway-card .tag {
       font-size: 7.5pt;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--green);
       margin: 0 0 1.5mm;
     }
     .pathway-card h3 {
@@ -436,7 +437,7 @@
       font-size: 7.5pt;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--green-deep);
       font-weight: 600;
     }
 
@@ -446,7 +447,7 @@
     .city-block {
       background: var(--white);
       padding: 4mm 4.5mm;
-      border-left: 3pt solid var(--gold);
+      border-left: 3pt solid var(--green);
       margin-bottom: 3.5mm;
     }
     .city-top {
@@ -467,7 +468,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--green);
     }
     .city-dates { margin: 0 0 1.5mm; font-size: 10.5pt; font-weight: 600; }
     .day-table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
@@ -524,14 +525,14 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--gold);
-      border-bottom: 1pt solid var(--gold);
+      color: var(--green);
+      border-bottom: 1pt solid var(--green);
       padding-bottom: 0.5mm;
     }
 
     .card {
       background: var(--white);
-      border-top: 2.5pt solid var(--gold);
+      border-top: 2.5pt solid var(--green);
       padding: 3.5mm 4mm;
       box-shadow: 0 1.5mm 6mm rgba(4,27,53,0.05);
     }
@@ -581,7 +582,7 @@
       flex-direction: column;
     }
     .closing .page-h { color: var(--white); font-size: 16pt; }
-    .closing .eyebrow { color: var(--gold); }
+    .closing .eyebrow { color: var(--green); }
     .closing-lede {
       margin: 2.5mm 0 0;
       font-size: 10pt;
@@ -592,22 +593,22 @@
     .reg-box {
       margin-top: 4mm;
       background: rgba(255,255,255,0.06);
-      border: 1pt solid rgba(201,162,39,0.45);
+      border: 1pt solid rgba(184,225,74,0.45);
       padding: 4mm;
     }
-    .reg-box h3 { margin: 0 0 2mm; font-size: 10pt; color: var(--gold-soft); }
+    .reg-box h3 { margin: 0 0 2mm; font-size: 10pt; color: var(--green-soft); }
     .reg-box > p { margin: 0; font-size: 8.5pt; color: rgba(255,255,255,0.78); line-height: 1.4; }
     .contact-block {
       margin-top: 3mm;
       padding-top: 3mm;
-      border-top: 0.6pt solid rgba(201,162,39,0.35);
+      border-top: 0.6pt solid rgba(184,225,74,0.35);
     }
     .contact-label {
       margin: 0 0 1.5mm;
       font-size: 8pt;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--green);
     }
     .contact-line {
       margin: 0 0 1mm;
@@ -618,7 +619,7 @@
     .contact-line strong {
       display: inline-block;
       min-width: 14mm;
-      color: var(--gold-soft);
+      color: var(--green-soft);
       font-weight: 600;
       font-size: 8pt;
       letter-spacing: 0.06em;
@@ -646,7 +647,7 @@
       text-align: center;
     }
     .tour-strip div {
-      border-top: 1.25pt solid var(--gold);
+      border-top: 1.25pt solid var(--green);
       padding-top: 2mm;
     }
     .tour-strip strong { display: block; font-size: 8.5pt; margin-bottom: 0.8mm; }
@@ -719,6 +720,157 @@
       height: 52mm;
     }
 
+
+    /* ——— Benefits & Pathway (dual section) ——— */
+    .benefits-page .inner {
+      background:
+        radial-gradient(ellipse 70% 40% at 100% 0%, rgba(184,225,74,0.12), transparent 55%),
+        radial-gradient(ellipse 50% 35% at 0% 100%, rgba(20,100,168,0.08), transparent 50%),
+        linear-gradient(180deg, #e8f0f7 0%, var(--white) 42%);
+    }
+    .benefits-dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      margin-top: 2mm;
+      flex: 1;
+      min-height: 0;
+      align-content: start;
+    }
+    .benefit-col {
+      background: var(--white);
+      border: 1pt solid rgba(4,27,53,0.08);
+      border-top: 3.5pt solid var(--green);
+      padding: 4mm 4mm 3.5mm;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .benefit-col.academy {
+      border-top-color: var(--navy);
+    }
+    .benefit-col .col-eyebrow {
+      margin: 0 0 1.5mm;
+      font-size: 7.5pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      font-family: "Monument Extended", sans-serif;
+    }
+    .benefit-col.academy .col-eyebrow { color: var(--blue); }
+    .benefit-col h3 {
+      margin: 0 0 3mm;
+      font-size: 11.5pt;
+      font-family: "Monument Extended", sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+    .benefit-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2.4mm;
+    }
+    .benefit-list li {
+      display: grid;
+      grid-template-columns: 5.5mm 1fr;
+      gap: 2.2mm;
+      align-items: start;
+      font-size: 8.2pt;
+      line-height: 1.35;
+      color: var(--navy);
+    }
+    .benefit-list .mark {
+      width: 4.5mm;
+      height: 4.5mm;
+      margin-top: 0.6mm;
+      background: var(--green);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      flex-shrink: 0;
+    }
+    .benefit-col.academy .mark {
+      background: var(--blue);
+      clip-path: none;
+      border-radius: 0.6mm;
+    }
+    .benefit-list strong {
+      display: block;
+      font-size: 8.5pt;
+      margin-bottom: 0.4mm;
+      color: var(--navy);
+    }
+    .benefit-list span {
+      color: var(--ink-muted);
+      font-size: 7.8pt;
+    }
+    .pathway-band {
+      margin-top: 4mm;
+      background: var(--navy);
+      color: var(--white);
+      padding: 4mm 4.5mm 3.5mm;
+    }
+    .pathway-band .band-label {
+      margin: 0 0 2.5mm;
+      font-size: 7.5pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-family: "Monument Extended", sans-serif;
+    }
+    .pathway-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1.35fr;
+      gap: 2mm;
+      align-items: stretch;
+    }
+    .flow-step {
+      background: rgba(255,255,255,0.07);
+      border: 1pt solid rgba(184,225,74,0.35);
+      padding: 2.8mm 2.5mm;
+      text-align: center;
+      min-height: 22mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .flow-step .step-num {
+      font-size: 7pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1mm;
+      font-family: "Monument Extended", sans-serif;
+    }
+    .flow-step strong {
+      font-size: 9pt;
+      letter-spacing: 0.03em;
+      line-height: 1.25;
+    }
+    .flow-step span {
+      display: block;
+      margin-top: 1mm;
+      font-size: 7pt;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.3;
+    }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-size: 14pt;
+      font-weight: 700;
+      padding: 0 0.5mm;
+    }
+    .pathway-disclaimer {
+      margin: 2.5mm 0 0;
+      font-size: 7pt;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.35;
+    }
+
     @media print {
       body { background: none; }
       .page { margin: 0; width: 210mm; height: 297mm; }
@@ -749,12 +901,12 @@
       <p class="cover-kicker display">Five-city India Tour · 2027</p>
       <h1 class="cover-title display">
         RAFA NADAL ACADEMY
-        <span class="gold">CLINIC INDIA TOUR 2027</span>
+        <span class="accent">CLINIC INDIA TOUR 2027</span>
       </h1>
       <p class="cover-support">Experience the Methodology. Train Like a Champion.</p>
       <p class="cover-cities">Mumbai · Bangalore · Kolkata · Chennai · Delhi — a promotional clinic and assessment experience inspired by Rafa Nadal Academy training methodology (subject to approved brand usage).</p>
       <div class="cover-actions">
-        <span class="pill pill-gold">Explore the Tour</span>
+        <span class="pill pill-green">Explore the Tour</span>
         <span class="pill pill-outline">Register Your Interest</span>
       </div>
       <div class="cover-meta">
@@ -830,12 +982,149 @@
           <div class="focus-item">Match understanding</div>
           <div class="focus-item">Competitive mindset</div>
         </div>
-        <p class="note">Programme focus areas only — not a guaranteed Academy curriculum unless officially approved. Opportunities (annual programmes, scholarships, India camp discounts, Spain invitation) may be considered subject to eligibility, assessment, availability and formal confirmation — never guaranteed.</p>
+        <p class="note">Programme focus areas only — not a guaranteed Academy curriculum unless officially approved. See the Benefits &amp; Pathway page for player and academy opportunities (subject to assessment and formal confirmation).</p>
       </div>
     </div>
   </section>
 
-  <!-- PAGE 3 — Clinic|Camp + welcome pack kit -->
+
+  <!-- PAGE 3 — Benefits for players/parents + academies + pathway -->
+  <section class="page benefits-page">
+    <div class="inner">
+      <header>
+        <p class="eyebrow display">Clinic benefits &amp; pathway</p>
+        <h2 class="page-h display">What the clinic unlocks — for players and academies.</h2>
+        <p class="lede">A focused Rafa Nadal Academy clinic experience in India, with a clear development pathway beyond the session. Organised by ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD. Opportunities beyond the clinic are subject to assessment, eligibility, availability and formal confirmation — never guaranteed.</p>
+        <div class="rule"></div>
+      </header>
+
+      <div class="benefits-dual">
+        <div class="benefit-col">
+          <p class="col-eyebrow display">For parents &amp; players</p>
+          <h3>Your player’s opportunity</h3>
+          <ul class="benefit-list">
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Rafa Nadal methodology in your city</strong>
+                <span>Train with Academy-inspired methodology without travelling overseas for the clinic itself.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Assessed by Rafa Nadal Academy coaching team</strong>
+                <span>On-court assessment by coaches linked to the Academy / school programme (profiles TBA).</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Invitation to the Rafa annual programme</strong>
+                <span>Outstanding assessments may lead to consideration for the Academy annual pathway.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Spain invitation tour with scholarship</strong>
+                <span>Exceptional players may be considered for a Spain invitation experience with scholarship support.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Scholarships on next camps</strong>
+                <span>Camp fee support may be offered for subsequent India camps where criteria are met.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Clear player pathway</strong>
+                <span>Clinic → Camps → Mallorca on scholarship and/or Annual programme invitation.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="benefit-col academy">
+          <p class="col-eyebrow display">For academies</p>
+          <h3>Partnership &amp; growth</h3>
+          <ul class="benefit-list">
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Business pathway with Atletas / RNA Clinic Tour</strong>
+                <span>Collaborate with ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD on tour hosting, player pipelines and local activation.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Grow tennis culture &amp; participation</strong>
+                <span>Bring a premium Academy-linked clinic to your city to inspire juniors, parents and competitive players.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Academy presence at your venue</strong>
+                <span>Host or affiliate with a Rafa Nadal Academy Clinic Tour touchpoint that elevates your programme’s profile.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Development funnel for your players</strong>
+                <span>Use Clinic → Camps → Mallorca / annual programme as a structured pathway for standout athletes.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Coach &amp; community visibility</strong>
+                <span>Position your academy as a gateway to international-standard methodology and assessment moments.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>Shared marketing &amp; registration reach</strong>
+                <span>Align with national tour messaging, digital registration and waitlist flows across five cities.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pathway-band">
+        <p class="band-label display">Player pathway</p>
+        <div class="pathway-flow">
+          <div class="flow-step">
+            <span class="step-num">01</span>
+            <strong>Clinic</strong>
+            <span>1.5-hour assessment in your city</span>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-step">
+            <span class="step-num">02</span>
+            <strong>Camps</strong>
+            <span>Extended development · scholarships possible</span>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-step">
+            <span class="step-num">03</span>
+            <strong>Mallorca &amp;/or Annual</strong>
+            <span>Scholarship pathway · annual programme invitation</span>
+          </div>
+        </div>
+        <p class="pathway-disclaimer">Pathway outcomes are discretionary and never guaranteed. Clinic fee ₹3,850 inclusive of GST applies to clinic registration. Camp and overseas terms published when confirmed. Reference: https://rafanadalacademyclinic2027.aiseorg.info/</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4 — Clinic|Camp + welcome pack kit -->
   <section class="page">
     <div class="inner">
       <header>
@@ -871,9 +1160,9 @@
                 <svg class="mock-svg" viewBox="0 0 64 64" fill="none">
                   <rect x="16" y="10" width="32" height="40" rx="4" fill="#041B35"/>
                   <rect x="16" y="10" width="32" height="8" fill="#0A2A4D"/>
-                  <path d="M16 22h32" stroke="#C9A227" stroke-width="1.5"/>
-                  <circle cx="32" cy="34" r="6" stroke="#C9A227" stroke-width="1.5"/>
-                  <path d="M24 50h16" stroke="#9E1B2E" stroke-width="2"/>
+                  <path d="M16 22h32" stroke="#B8E14A" stroke-width="1.5"/>
+                  <circle cx="32" cy="34" r="6" stroke="#B8E14A" stroke-width="1.5"/>
+                  <path d="M24 50h16" stroke="#8FBF22" stroke-width="2"/>
                 </svg>
               </div>
               <strong>Clinic jersey</strong>
@@ -884,8 +1173,8 @@
                 <svg class="mock-svg" viewBox="0 0 64 64" fill="none">
                   <ellipse cx="32" cy="38" rx="18" ry="8" fill="#041B35"/>
                   <path d="M14 38c0-14 8-24 18-24s18 10 18 24" fill="#0A2A4D"/>
-                  <path d="M20 28c4-6 8-8 12-8s8 2 12 8" stroke="#C9A227" stroke-width="1.5"/>
-                  <rect x="28" y="18" width="8" height="4" rx="1" fill="#9E1B2E"/>
+                  <path d="M20 28c4-6 8-8 12-8s8 2 12 8" stroke="#B8E14A" stroke-width="1.5"/>
+                  <rect x="28" y="18" width="8" height="4" rx="1" fill="#8FBF22"/>
                 </svg>
               </div>
               <strong>Rafa Nadal cap</strong>
@@ -896,8 +1185,8 @@
                 <svg class="mock-svg" viewBox="0 0 64 64" fill="none">
                   <rect x="12" y="20" width="40" height="28" rx="2" fill="#0A2A4D"/>
                   <rect x="12" y="20" width="40" height="6" fill="#041B35"/>
-                  <path d="M18 36h28M18 42h20" stroke="#C9A227" stroke-width="1.5"/>
-                  <circle cx="48" cy="18" r="3" fill="#9E1B2E"/>
+                  <path d="M18 36h28M18 42h20" stroke="#B8E14A" stroke-width="1.5"/>
+                  <circle cx="48" cy="18" r="3" fill="#8FBF22"/>
                 </svg>
               </div>
               <strong>Performance towel</strong>
@@ -907,9 +1196,9 @@
               <div class="kit-mock" aria-hidden="true">
                 <svg class="mock-svg" viewBox="0 0 64 64" fill="none">
                   <rect x="22" y="14" width="20" height="38" rx="6" fill="#041B35"/>
-                  <rect x="26" y="8" width="12" height="8" rx="2" fill="#C9A227"/>
+                  <rect x="26" y="8" width="12" height="8" rx="2" fill="#B8E14A"/>
                   <rect x="28" y="24" width="8" height="18" rx="2" fill="#0A2A4D"/>
-                  <path d="M30 48h4" stroke="#9E1B2E" stroke-width="2"/>
+                  <path d="M30 48h4" stroke="#8FBF22" stroke-width="2"/>
                 </svg>
               </div>
               <strong>Shaker bottle</strong>
@@ -919,9 +1208,9 @@
               <div class="kit-mock" aria-hidden="true">
                 <svg class="mock-svg" viewBox="0 0 64 64" fill="none">
                   <rect x="14" y="18" width="36" height="30" rx="3" fill="#0A2A4D"/>
-                  <path d="M20 18v-4h24v4" stroke="#C9A227" stroke-width="2"/>
+                  <path d="M20 18v-4h24v4" stroke="#B8E14A" stroke-width="2"/>
                   <circle cx="32" cy="34" r="7" stroke="#FFFFFF" stroke-width="1.5"/>
-                  <path d="M32 28v12M26 34h12" stroke="#9E1B2E" stroke-width="1.5"/>
+                  <path d="M32 28v12M26 34h12" stroke="#8FBF22" stroke-width="1.5"/>
                 </svg>
               </div>
               <strong>Food pack</strong>
@@ -932,8 +1221,8 @@
                 <svg class="mock-svg" viewBox="0 0 64 64" fill="none">
                   <rect x="12" y="10" width="40" height="46" rx="2" fill="#FFFFFF" stroke="#041B35" stroke-width="2"/>
                   <path d="M20 22h24M20 28h18M20 34h20" stroke="#041B35" stroke-width="1.5"/>
-                  <rect x="20" y="42" width="24" height="6" fill="#C9A227"/>
-                  <circle cx="44" cy="16" r="4" fill="#9E1B2E"/>
+                  <rect x="20" y="42" width="24" height="6" fill="#B8E14A"/>
+                  <circle cx="44" cy="16" r="4" fill="#8FBF22"/>
                 </svg>
               </div>
               <strong>Participation diploma</strong>
@@ -949,7 +1238,7 @@
     </div>
   </section>
 
-  <!-- PAGE 4 — February cities + photos -->
+  <!-- PAGE 5 — February cities + photos -->
   <section class="page">
     <div class="inner">
       <header>
@@ -1006,7 +1295,7 @@
     </div>
   </section>
 
-  <!-- PAGE 5 — Upcoming + registration + photos -->
+  <!-- PAGE 6 — Upcoming + registration + photos -->
   <section class="page">
     <div class="inner">
       <header>
@@ -1043,7 +1332,7 @@
             <h3>Required fields</h3>
             <p>Player full name · City · Player age · Player category (Juniors / Mid-level / High Performance / Elite) · Interested in Clinic or Camp · Parent / guardian name · Parent / guardian contact · Guardian consent · Privacy acknowledgement</p>
           </div>
-          <div class="card" style="border-top-color: var(--red);">
+          <div class="card" style="border-top-color: var(--green-deep);">
             <h3>Fee &amp; capacity</h3>
             <p><strong>₹3,850</strong> (INR) inclusive of GST clinic registration. Camp pricing TBA. Capacity checked securely; when a city/day is full the CTA becomes Join Waitlist. Provisional capacity default: 300 per city (meaning TBC).</p>
           </div>
@@ -1063,7 +1352,7 @@
     </div>
   </section>
 
-  <!-- PAGE 6 — Closing with photo hero -->
+  <!-- PAGE 7 — Closing with photo hero -->
   <section class="page">
     <div class="closing">
       <div class="closing-hero">
@@ -1116,7 +1405,7 @@
             RAFA NADAL ACADEMY CLINIC INDIA TOUR 2027
           </p>
           <p style="margin:0 0 2mm;">
-            Organised in India by <strong style="color:var(--gold-soft)">ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD</strong>.
+            Organised in India by <strong style="color:var(--green-soft)">ATLETAS INDIAN SPORTS AND ENTERTAINMENT PVT LTD</strong>.
           </p>
           <p style="margin:0;">
             This brochure does not use Rafa Nadal’s face or likeness as a hero endorsement and does not imply personal attendance.

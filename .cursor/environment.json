@@ -1,0 +1,4 @@
+{
+  "name": "RNA",
+  "install": "[ ! -d '/agent/repos/RNA' ] || cd '/agent/repos/RNA' || exit $?\ntest -f README.md"
+}

@@ -4,7 +4,10 @@ import { media, offerings, partners, whatsappLink } from '../data/content'
 export function Home() {
   return (
     <>
-      <section className="hero hero--home hero--bleed" aria-label="Sport in Motion">
+      <section
+        className="hero hero--home hero--bleed"
+        aria-label="Sport has the power to move us"
+      >
         <div className="hero__media">
           <img
             src={media.hero}
@@ -18,11 +21,13 @@ export function Home() {
         <div className="hero__content">
           <p className="hero__brand">AISE</p>
           <h1>
-            Sport in <em>Motion.</em>
+            Sport has the power
+            <br />
+            to <em>move</em> us.
           </h1>
           <p className="hero__support">
-            Building the leagues, pathways and programmes that put sport on
-            the biggest stage.
+            AISET builds the leagues, learning pathways, products and platforms
+            that bring sport closer to people.
           </p>
           <div className="cta-row">
             <Link to="/contact" className="button">

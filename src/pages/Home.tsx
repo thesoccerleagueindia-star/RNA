@@ -40,12 +40,50 @@ export function Home() {
         </div>
       </section>
 
+      <section className="section section--paper" id="rsdl-home">
+        <div className="container split">
+          <div className="prose">
+            <p className="eyebrow">League property</p>
+            <h2>
+              Rising Star <em>Development League</em>
+            </h2>
+            <p>
+              A city-led football platform where players can register, compete
+              and build a verified match story.
+            </p>
+            <div className="cta-row">
+              <Link to="/rising-star" className="button button--dark">
+                View RSDL cities
+              </Link>
+              <a
+                className="button"
+                href={whatsappLink('/rising-star')}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ask about registration
+              </a>
+            </div>
+          </div>
+          <div className="visual-frame visual-frame--logo">
+            <img
+              src={media.rsdlLogo}
+              alt="Rising Star Development League crest"
+              width={720}
+              height={720}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="section section--ink" id="intro">
         <div className="container split">
           <div className="prose">
             <p className="eyebrow eyebrow--light">01 / Our purpose</p>
             <h2>
-              Credible sport experiences that turn into <em>opportunity.</em>
+              We create credible, high-energy sport experiences that begin with
+              participation and extend into <em>opportunity.</em>
             </h2>
             <p>
               From leagues and sports IP to school programmes, international
@@ -72,15 +110,22 @@ export function Home() {
 
       <section className="section section--paper">
         <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">What we build</p>
-            <h2>
-              One organisation. <em>Many ways to play.</em>
-            </h2>
-            <p>
-              We create credible, high-energy sport experiences that begin with
-              participation and extend into leagues, learning and technology.
-            </p>
+          <div className="split section-heading-split">
+            <div className="section-heading">
+              <p className="eyebrow">What we build</p>
+              <h2>
+                One organisation. <em>Many ways to play.</em>
+              </h2>
+            </div>
+            <div className="visual-frame visual-frame--sharp">
+              <img
+                src={media.programmes}
+                alt="Young athletes training together on the pitch"
+                width={1600}
+                height={900}
+                loading="lazy"
+              />
+            </div>
           </div>
           <div className="offer-list offer-list--paper">
             {offerings.map((item) => (
@@ -125,59 +170,33 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--paper">
-        <div className="container split split--reverse">
+      <section className="section section--band">
+        <div className="container split">
+          <div className="prose">
+            <p className="quote">
+              “The score is only one part of the story. The real win is a
+              generation that chooses to keep playing.”
+            </p>
+            <div className="cta-row">
+              <Link to="/programmes" className="button button--dark">
+                Explore AISET programmes
+              </Link>
+            </div>
+          </div>
           <div className="visual-frame visual-frame--sharp">
             <img
-              src={media.development}
-              alt="City-led football competition in action"
+              src={media.tours}
+              alt="Group heading toward a stadium for a sport experience"
               width={1600}
               height={900}
               loading="lazy"
             />
           </div>
-          <div className="prose">
-            <p className="eyebrow">League property</p>
-            <h2>
-              Rising Star <em>Development League</em>
-            </h2>
-            <p>
-              A city-led football platform where players can register, compete
-              and build a verified match story — individually, city by city.
-            </p>
-            <div className="cta-row">
-              <Link to="/rising-star" className="button button--dark">
-                View RSDL cities
-              </Link>
-              <a
-                className="button"
-                href={whatsappLink('/rising-star')}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Ask about registration
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--band">
-        <div className="container">
-          <p className="quote">
-            “The score is only one part of the story. The real win is a
-            generation that chooses to keep playing.”
-          </p>
-          <div className="cta-row">
-            <Link to="/programmes" className="button button--dark">
-              Explore AISET programmes
-            </Link>
-          </div>
         </div>
       </section>
 
       <section className="section section--ink">
-        <div className="container">
+        <div className="container split">
           <div className="section-heading">
             <p className="eyebrow eyebrow--light">Global partners</p>
             <h2>
@@ -188,6 +207,15 @@ export function Home() {
               education, technology, player pathways and international
               opportunity.
             </p>
+          </div>
+          <div className="visual-frame visual-frame--sharp">
+            <img
+              src={media.data}
+              alt="Sport community and partnership energy"
+              width={1600}
+              height={900}
+              loading="lazy"
+            />
           </div>
         </div>
         <div className="partner-marquee" aria-hidden="true">
@@ -206,10 +234,6 @@ export function Home() {
             <h2>
               Ready to put <em>sport in motion?</em>
             </h2>
-            <p>
-              Whether you are exploring a sports programme, league, academy
-              pathway, product or partnership, our team is ready to begin.
-            </p>
             <div className="cta-row">
               <Link to="/contact" className="button button--dark">
                 Make an enquiry

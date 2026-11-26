@@ -340,6 +340,7 @@ em {
 
 .hero--bleed {
   color: #ffffff;
+  align-items: center;
 }
 
 .hero--bleed .hero__media {
@@ -353,7 +354,7 @@ em {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 55% center;
+  object-position: center 42%;
   display: block;
   opacity: 1;
   filter: none;
@@ -369,13 +370,13 @@ em {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  /* Light ink for type only — never a white/muddy wash */
+  /* Soft navy ink for type over dark sky — never a white wash */
   background: linear-gradient(
-    100deg,
-    rgba(10, 10, 10, 0.62) 0%,
-    rgba(10, 10, 10, 0.32) 24%,
-    rgba(10, 10, 10, 0.1) 42%,
-    rgba(10, 10, 10, 0) 58%
+    105deg,
+    rgba(4, 10, 28, 0.55) 0%,
+    rgba(4, 10, 28, 0.28) 28%,
+    rgba(4, 10, 28, 0.08) 48%,
+    rgba(4, 10, 28, 0) 62%
   );
 }
 
@@ -387,9 +388,9 @@ em {
   margin-inline: auto;
   justify-self: stretch;
   padding:
-    calc(var(--header-h) + 2.75rem)
+    calc(var(--header-h) + 1.5rem)
     0
-    clamp(3rem, 8vw, 5.5rem);
+    clamp(2.5rem, 6vw, 4rem);
   animation: rise-in 0.7s var(--ease) both;
 }
 
@@ -442,15 +443,15 @@ em {
   }
 
   .hero--bleed .hero__media img {
-    object-position: 70% 45%;
+    object-position: center 48%;
   }
 
   .hero--bleed .hero__veil {
     background: linear-gradient(
       180deg,
-      rgba(10, 10, 10, 0.08) 0%,
-      rgba(10, 10, 10, 0.22) 45%,
-      rgba(10, 10, 10, 0.58) 100%
+      rgba(4, 10, 28, 0.12) 0%,
+      rgba(4, 10, 28, 0.28) 42%,
+      rgba(4, 10, 28, 0.62) 100%
     );
   }
 
